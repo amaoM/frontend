@@ -1,11 +1,4 @@
-export const statusUp = id => ({
-  type: 'STATUS_UP',
+export const onChangeStatus = id => ({
+  type: 'STATUS_TOGGLE',
   id,
-  status: 'up',
-});
-
-export const statusDown = id => ({
-  type: 'STATUS_DOWN',
-  id,
-  status: 'down',
 });

@@ -2,10 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import VisibleIncident from '../containers/Incident';
 
+const ul = {
+  'list-style': 'none',
+};
+
 const IncidentList = ({
   incidents,
 }) => (
-  <ul>
+  <ul style={ul}>
     {incidents.map(incident => (
       <VisibleIncident
         key={incident.id}
@@ -20,6 +24,7 @@ IncidentList.propTypes = {
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     status: PropTypes.string.isRequired,
+    toggleStatus: PropTypes.string.isRequired,
   }).isRequired).isRequired,
 };
 

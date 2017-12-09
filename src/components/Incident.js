@@ -1,27 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+const span = {
+  'padding-right': '10px',
+};
+
 const Incident = ({
   id,
-  title,
   status,
-  onUpClick,
-  onDownClick,
+  title,
+  person,
+  toggleStatus,
+  onChangeStatus,
 }) => (
   <li>
-    <span>{title}</span>
-    <span>{status}</span>
-    <button onClick={() => onUpClick(id)}>up</button>
-    <button onClick={() => onDownClick(id)}>down</button>
+    <span className="status" style={span}>{status}</span>
+    <span className="title" style={span}>{title}</span>
+    <span className="person" style={span}>{person}</span>
+    <button className="status" onClick={() => onChangeStatus(id)}>{toggleStatus}</button>
   </li>
 );
 
 Incident.propTypes = {
   id: PropTypes.number.isRequired,
-  title: PropTypes.string.isRequired,
   status: PropTypes.string.isRequired,
-  onUpClick: PropTypes.func.isRequired,
-  onDownClick: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
+  person: PropTypes.string.isRequired,
+  toggleStatus: PropTypes.string.isRequired,
+  onChangeStatus: PropTypes.func.isRequired,
 };
 
 export default Incident;

@@ -1,18 +1,14 @@
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Incident from '../components/Incident';
-import { statusUp, statusDown } from '../actions/incident';
+import * as actions from '../actions/incident';
 
 const mapStateToProps = state => ({
   incident: state.incident,
 });
 
 const mapDispatchToProps = dispatch => ({
-  onUpClick: (id) => {
-    dispatch(statusUp(id));
-  },
-  onDownClick: (id) => {
-    dispatch(statusDown(id));
-  },
+  ...bindActionCreators(actions, dispatch),
 });
 
 const VisibleIncident = connect(

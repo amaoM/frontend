@@ -3,13 +3,15 @@ const incident = (
   action,
 ) => {
   switch (action.type) {
-    case 'STATUS_UP':
-    case 'STATUS_DOWN':
+    case 'STATUS_TOGGLE':
       if (state.id === action.id) {
+        const toggleStatus = { up: 'down', down: 'up' };
         return {
           id: state.id,
+          status: toggleStatus[state.status],
           title: state.title,
-          status: action.status,
+          person: state.person,
+          toggleStatus: state.status,
         };
       }
       return state;
