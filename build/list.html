@@ -4,45 +4,104 @@
     <meta charset="UTF-8">
     <title>Runway</title>
     <link rel="stylesheet" type="text/css" href="./app.css">
+    <link rel="stylesheet" type="text/css" href="./fontawesome-all.min.css">
 </head>
 <body>
-    <header>
-        <input type="text">
-        <select>
-            <option>すべて</option>
-            <option>Critical</option>
-            <option>Warning</option>
-        </select>
-        <select>
-            <option>All</option>
-            <option>未対応</option>
-            <option>対応中</option>
-            <option>完了</option>
-        </select>
-        <button>Search</button>
-    </header>
-    <main>
-        <table>
-            <thead>
-                <tr>
-                    <th>Level</th>
-                    <th>Status</th>
-                    <th>Title</th>
-                    <th>Person</th>
-                    <th>Operation</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Critical</td>
-                    <td>対応中</td>
-                    <td>Blah blah blah</td>
-                    <td>mamao</td>
-                    <td><button>編集</button></td>
-                </tr>
-            </tbody>
-        </table>
+    <main class="container">
+        <div class="row">
+            <section class="search col">
+                <input type="text">
+                <select>
+                    <option>すべて</option>
+                    <option>Critical</option>
+                    <option>Warning</option>
+                </select>
+                <select>
+                    <option>すべて</option>
+                    <option>未対応</option>
+                    <option>対応中</option>
+                    <option>完了</option>
+                </select>
+            </section>
+        </div>
+        <div class="row">
+            <section class="col-8">
+                <table class="table">
+                    <thead class="table__head">
+                        <tr class="table__head__row">
+                            <th class="table__head__row__item" width="20%">重要度</th>
+                            <th class="table__head__row__item" width="20%">ステータス</th>
+                            <th class="table__head__row__item" width="50%">タイトル</th>
+                            <th class="table__head__row__item" width="10%">担当者</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table__body">
+                        <tr class="table__body__row table__body__row--critical">
+                            <td class="table__body__row__item table__body__row__item--center">Critical</td>
+                            <td class="table__body__row__item table__body__row--center">対応中</td>
+                            <td>Blah blah blah</td>
+                            <td class="table__body__row__item table__body__row__item--center">mamao</td>
+                        </tr>
+                        <tr class="table__body__row table__body__row--warning">
+                            <td class="table__body__row__item table__body__row__item--center">Warning</td>
+                            <td class="table__body__row__item table__body__row__item--center">対応中</td>
+                            <td>Blah blah blah</td>
+                            <td class="table__body__row__item table__body__row__item--center">mamao</td>
+                        </tr>
+                        <tr class="table__body__row table__body__row--completed">
+                            <td class="table__body__row__item table__body__row__item--center">Warning</td>
+                            <td class="table__body__row__item table__body__row__item--center">完了</td>
+                            <td>Blah blah blah</td>
+                            <td class="table__body__row__item table__body__row__item--center">mamao</td>
+                        </tr>
+                        <tr class="table__body__row table__body__row--warning">
+                            <td class="table__body__row__item table__body__row__item--center">Warning</td>
+                            <td class="table__body__row__item table__body__row__item--center">対応中</td>
+                            <td>Blah blah blah</td>
+                            <td class="table__body__row__item table__body__row__item--center">mamao</td>
+                        </tr>
+                        <tr class="table__body__row table__body__row--completed">
+                            <td class="table__body__row__item table__body__row__item--center">Critical</td>
+                            <td class="table__body__row__item table__body__row__item--center">完了</td>
+                            <td>Blah blah blah</td>
+                            <td class="table__body__row__item table__body__row__item--center">mamao</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section class="col-4">
+                <ul class="incident">
+                    <li class="incident__item-header">重要度</li>
+                    <li class="incident__item-value">
+                        <select>
+                            <option>Critical</option>
+                            <option>Warning</option>
+                        </select>
+                    </li>
+                    <li class="incident__item-header">ステータス</li>
+                    <li class="incident__item-value">
+                        <select>
+                            <option>未対応</option>
+                            <option>対応中</option>
+                            <option>完了</option>
+                        </select>
+                    </li>
+                    <li class="incident__item-header">タイトル</li>
+                    <li class="incident__item-value">
+                        <input type="text">
+                    </li>
+                    <li class="incident__item-header">詳細</li>
+                    <li class="incident__item-value">
+                        <textarea></textarea>
+                    </li>
+                    <li class="incident__item-header">担当者</li>
+                    <li class="incident__item-value">
+                        <input type="text">
+                    </li>
+                    <li class="incident__item-button"><button>作成</button></li>
+                </ul>
+            </section>
+        </div>
     </main>
-    <footer></footer>
 </body>
 </html>

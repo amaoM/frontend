@@ -1,11 +1,87 @@
 @import 'reset';
+@import 'bootstrap/bootstrap-grid';
+@import 'list';
+@import 'detail';
 
-table {
-  thead {
-    tr {
-      th {
-        border-bottom: 1px solid #DDD;
+
+body {
+  font-size: 75%;
+  margin: 10px 0;
+}
+
+header {
+  margin-bottom: 20px;
+}
+
+main {
+  margin-bottom: 20px;
+}
+
+.table {
+
+  &__head {
+    font-weight: bold;
+
+    &__row {
+
+      &__item {
+        padding-bottom: 10px;
+        border-bottom: 3px solid #ddd;
       }
     }
   }
+
+  &__body {
+
+    &__row {
+      cursor: pointer;
+
+      &__item {
+        padding: 10px;
+        border-bottom: 1px solid #eee;
+
+        &--center {
+          text-align: center;
+        }
+
+        &--left {
+          text-align: left;
+        }
+
+        &--right {
+          text-align: right;
+        }
+      }
+
+      &--critical {
+        background: rgba(#fc0e31,1);
+        color: white;
+        &:hover {
+          background: rgba(#fc0e31,0.7);
+        }
+      }
+
+      &--warning {
+        background: rgba(#fed430,1);
+        &:hover {
+          background: rgba(#fed430,0.7);
+        }
+      }
+
+      &--completed {
+        background-color: #f1f5ff;
+        &:hover {
+          background: rgba(#f1f5ff,0.7);
+        }
+      }
+    }
+  }
+}
+
+select {
+  vertical-align: middle;
+}
+
+.row {
+  padding-bottom: 10px;
 }
