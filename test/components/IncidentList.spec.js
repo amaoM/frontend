@@ -1,7 +1,7 @@
 import React from 'react';
 import { expect } from 'chai';
 import { describe, it } from 'mocha';
-import { shallow, mount } from 'enzyme';
+import { mount } from 'enzyme';
 import { spy } from 'sinon';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk'

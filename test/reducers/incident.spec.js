@@ -1,7 +1,7 @@
 import { describe, it } from 'mocha';
 import { expect } from 'chai';
 import reducer from '../../src/reducers/incident';
-import * as actions from '../../src/actions/incident';
+import * as actions from '../../src/actions/searchIncident';
 
 describe('reducers::incident', () => {
   describe('statusToggle', () => {

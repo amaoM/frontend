@@ -15,6 +15,11 @@ const incident = (
         };
       }
       return state;
+    case 'CREATE_INCIDENT':
+      return {
+        title: action.title,
+
+      };
     default:
       return state;
   }

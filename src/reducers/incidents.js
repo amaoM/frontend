@@ -1,34 +1,42 @@
 import incident from './incident';
 
+const initialState = [];
+
 const incidents = (
-  state = [
-    {
-      id: 1,
-      status: 'up',
-      title: 'title1',
-      person: 'person1',
-      toggleStatus: 'down',
-    },
-    {
-      id: 2,
-      status: 'up',
-      title: 'title2',
-      person: 'person2',
-      toggleStatus: 'down',
-    },
-    {
-      id: 3,
-      status: 'up',
-      title: 'title3',
-      person: 'person3',
-      toggleStatus: 'down',
-    },
-  ],
+  state = initialState,
   action,
 ) => {
   switch (action.type) {
     case 'STATUS_TOGGLE':
       return state.map(t => incident(t, action));
+    case 'SEARCH_KEYWORD': {
+      let search = {};
+      switch (action.event.target.name) {
+        case 'keyword':
+          search = Object.assign({}, action.search, {
+            keyword: action.event.target.value,
+          });
+          break;
+        case 'level':
+          search = Object.assign({}, action.search, {
+            level: action.event.target.value,
+          });
+          break;
+        case 'status':
+          search = Object.assign({}, action.search, {
+            status: action.event.target.value,
+          });
+          break;
+        default:
+          search = state;
+      }
+      return state.filter(t => (t.title.includes(search.keyword))).map(t => incident(t, action));
+    }
+    case 'CREATE_INCIDENT':
+      return [
+        ...state,
+        Object.assign({}, action.incidentCreateForm),
+      ];
     default:
       return state;
   }
