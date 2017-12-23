@@ -12,9 +12,3 @@ export const searchIncident = event => ({
   type: 'SEARCH_KEYWORD',
   event,
 });
-
-export const onChangeStatus = id => ({
-  type: 'STATUS_TOGGLE',
-  id,
-});
-

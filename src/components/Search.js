@@ -21,7 +21,7 @@ const createOptions = (
   const options = [];
   let isSelected = false;
   Object.keys(items).forEach((key) => {
-    if (selectedKey === key) isSelected = true;
+    isSelected = selectedKey === key;
     options.push(<option key={key} value={key} defaultValue={isSelected} >{items[key]}</option>);
   });
   return options;
