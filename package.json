@@ -46,6 +46,8 @@
     "mocha": "~4.0.1",
     "node-sass": "~4.7.2",
     "redux-devtools": "^3.4.1",
+    "redux-mock-store": "^1.3.0",
+    "redux-thunk": "^2.2.0",
     "sass-loader": "~6.0.6",
     "sinon": "~4.1.2",
     "source-map-loader": "^0.2.3",
@@ -55,7 +57,7 @@
   },
   "scripts": {
     "test": "mocha --require babel-core/register --require ./test/setup.js test/**/*.spec.js",
-    "start": "webpack-dev-server --host 0.0.0.0 --public 172.17.167.47 --watch-poll --https",
+    "start": "webpack-dev-server --host 0.0.0.0 --public 192.168.110.110:9000 --watch-poll",
     "build": "webpack",
     "lint": "eslint"
   },
