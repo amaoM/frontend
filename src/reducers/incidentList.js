@@ -2,6 +2,8 @@ import incident from './incident';
 
 const initialState = [];
 
+let newIncidentId = 0;
+
 const incidentList = (
   state = initialState,
   action,
@@ -10,9 +12,10 @@ const incidentList = (
     case 'SEARCH_KEYWORD':
       return state.map(t => incident(t, action));
     case 'CREATE_INCIDENT':
+      newIncidentId += 1;
       return [
         ...state,
-        Object.assign({}, action.incidentCreateForm),
+        Object.assign({}, { id: newIncidentId }, action.incidentCreateForm),
       ];
     default:
       return state;

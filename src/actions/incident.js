@@ -12,3 +12,8 @@ export const searchIncident = event => ({
   type: 'SEARCH_KEYWORD',
   event,
 });
+
+export const detailIncident = id => ({
+  type: 'DETAIL_INCIDENT',
+  id,
+});

@@ -4,20 +4,19 @@ import { expect } from 'chai';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk'
 import { shallow } from 'enzyme';
-import { Provider } from 'react-redux';
 import VisibleIncidentList from '../../src/containers/IncidentList';
-import IncidentList from '../../src/components/IncidentList';
 
 describe('containers::IncidentList', () => {
   describe('searchIncident', () => {
     describe('when search with keyword', () => {
       const incidentList = [
         {
+          id: 1,
           title: 'Blah blah blah',
           status: 'unsupported',
           level: 'critical',
           person: 'person',
-        }
+        },
       ];
 
       const search = {
@@ -28,11 +27,12 @@ describe('containers::IncidentList', () => {
 
       const expected = [
         {
+          id: 1,
           title: 'Blah blah blah',
           status: 'unsupported',
           level: 'critical',
           person: 'person',
-        }
+        },
       ];
       it('should render data that include keyword in title', () => {
         const mockStore = configureMockStore([thunk]);
@@ -45,45 +45,49 @@ describe('containers::IncidentList', () => {
     describe('when search with each status', () => {
       const incidentList = [
         {
+          id: 1,
           title: 'Blah blah blah',
           status: 'unsupported',
           level: 'critical',
           person: 'person',
         },
         {
+          id: 2,
           title: 'Blah blah blah',
           status: 'in_progress',
           level: 'critical',
           person: 'person',
         },
         {
+          id: 3,
           title: 'Blah blah blah',
           status: 'completed',
           level: 'critical',
           person: 'person',
-        }
+        },
       ];
 
       it('should render data that include specified status', () => {
         const mockStore = configureMockStore([thunk]);
         const statusList = [
-          'unsupported',
-          'in_progress',
-          'completed',
+          [1, 'unsupported'],
+          [2, 'in_progress'],
+          [3, 'completed'],
         ];
-        statusList.forEach(status => {
+        statusList.forEach((row) => {
           const search = {
             keyword: '',
-            status: status,
+            status: row[1],
             level: 'all',
           }
           const expected = [
             {
+              id: row[0],
               title: 'Blah blah blah',
-              status: status,
+              status: row[1],
               level: 'critical',
               person: 'person',
-            }
+            },
           ];
           const store = mockStore({ incidentList, search });
           const container = shallow(<VisibleIncidentList />, { context: { store } });
@@ -95,12 +99,14 @@ describe('containers::IncidentList', () => {
     describe('when search with each level', () => {
       const incidentList = [
         {
+          id: 1,
           title: 'Blah blah blah',
           status: 'unsupported',
           level: 'critical',
           person: 'person',
         },
         {
+          id: 2,
           title: 'Blah blah blah',
           status: 'unsupported',
           level: 'warning',
@@ -111,22 +117,23 @@ describe('containers::IncidentList', () => {
       it('should render data that include specified level', () => {
         const mockStore = configureMockStore([thunk]);
         const levelList = [
-          'critical',
-          'warning',
+          [1, 'critical'],
+          [2, 'warning'],
         ];
-        levelList.forEach(level => {
+        levelList.forEach((row) => {
           const search = {
             keyword: '',
             status: 'unsupported',
-            level: level,
-          }
+            level: row[1],
+          };
           const expected = [
             {
+              id: row[0],
               title: 'Blah blah blah',
               status: 'unsupported',
-              level: level,
+              level: row[1],
               person: 'person',
-            }
+            },
           ];
           const store = mockStore({ incidentList, search });
           const container = shallow(<VisibleIncidentList />, { context: { store } });
