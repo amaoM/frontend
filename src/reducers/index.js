@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
-import incidents from './incidents';
+import incidentList from './incidentList';
 import search from './search';
 import incidentCreateForm from './incidentCreateForm';
 
 export default combineReducers({
-  incidents,
+  incidentList,
   search,
   incidentCreateForm,
 });

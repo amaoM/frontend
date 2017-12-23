@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import VisibleIncident from '../containers/Incident';
 
 const IncidentList = ({
-  incidents,
+  incidentList,
 }) => (
   <section className="col-8">
     <table className="table">
@@ -16,7 +16,7 @@ const IncidentList = ({
         </tr>
       </thead>
       <tbody className="table__body">
-        {incidents.map(incident => (
+        {incidentList.map(incident => (
           <VisibleIncident
             key={incident.title}
             {...incident}
@@ -28,7 +28,7 @@ const IncidentList = ({
 );
 
 IncidentList.propTypes = {
-  incidents: PropTypes.arrayOf(PropTypes.shape({
+  incidentList: PropTypes.arrayOf(PropTypes.shape({
     level: PropTypes.string.isRequired,
     status: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,

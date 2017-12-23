@@ -1,7 +1,7 @@
 import React from 'react';
 import { expect } from 'chai';
 import { describe, it } from 'mocha';
-import { mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import { spy } from 'sinon';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk'
@@ -9,7 +9,7 @@ import { Provider } from 'react-redux';
 import Search from '../../src/components/Search';
 
 describe('component::Search', () => {
-  it('Create a search component', () => {
+  it('should create a search component with setted values', () => {
     const search = {
       keyword: 'test',
       level: 'critical',
@@ -17,8 +17,12 @@ describe('component::Search', () => {
     };
     const mockStore = configureMockStore([thunk]);
     const store = mockStore({ search });
-    const wrapper = mount(<Provider store={store}><Search search={search} /></Provider>);
-    expect(wrapper.find('select[name="level"]')).to.have.length(1);
-    expect(wrapper.find('select[name="status"]')).to.have.length(1);
+    const component = shallow(<Search search={search} />, { context: store });
+    expect(component.find('input[name="keyword"]')).to.have.length(1);
+    expect(component.find('select[name="level"]')).to.have.length(1);
+    expect(component.find('select[name="status"]')).to.have.length(1);
+    expect(component.find('input[name="keyword"]').prop('value')).to.equal('test');
+    expect(component.find('select[name="level"] option[defaultValue=true]').prop('value')).to.equal('critical');
+    expect(component.find('select[name="status"] option[defaultValue=true]').prop('value')).to.equal('in_progress');
   });
 });
