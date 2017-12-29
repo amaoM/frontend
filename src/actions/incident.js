@@ -13,7 +13,22 @@ export const searchIncident = event => ({
   event,
 });
 
-export const detailIncident = id => ({
-  type: 'DETAIL_INCIDENT',
-  id,
+export const showTimeLine = incidentId => ({
+  type: 'SHOW_TIMELINE',
+  incidentId,
+});
+
+export const updateTimeLine = event => ({
+  type: 'UPDATE_TIMELINE',
+  event,
+});
+
+export const editIncident = incidentEditForm => ({
+  type: 'EDIT_INCIDENT',
+  incidentEditForm,
+});
+
+export const updateIncidentEditForm = event => ({
+  type: 'UPDATE_INCIDENT_EDIT_FORM',
+  event,
 });

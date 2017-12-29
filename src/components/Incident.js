@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { browserHistory } from 'react-router';
 
 const Incident = ({
   id,
@@ -11,7 +12,7 @@ const Incident = ({
   let rowClassName = `table__body__row table__body__row--${level}`;
   if (status === 'completed') rowClassName = 'table__body__row table__body__row--completed';
   return (
-    <tr className={rowClassName} key={id}>
+    <tr className={rowClassName} key={id} onClick={() => browserHistory.push(`/detail/${id}`)}>
       <td className="table__body__row__item table__body__row__item--center">{id}</td>
       <td className="table__body__row__item table__body__row__item--center">{level}</td>
       <td className="table__body__row__item table__body__row__item--center">{status}</td>
