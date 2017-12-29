@@ -3,7 +3,7 @@
 
 Vagrant.configure("2") do |config|
   config.vm.box = "centos7"
-  config.vm.network :private_network, ip: "192.168.110.110"
+  config.vm.network :private_network, ip: "192.168.110.110", guest: 9000, host: 9000
 
   config.vm.synced_folder ".", "/home/vagrant/frontend", :create => true, :owner=> 'vagrant', :group=>'vagrant', :mount_options => ['dmode=777,fmode=777']
   config.vm.synced_folder "../ansible", "/vagrant", :create => true, :owner=> 'vagrant', :group=>'vagrant', :mount_options => ['dmode=777,fmode=666']
