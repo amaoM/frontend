@@ -1,5 +1,5 @@
 const initialState = {
-  id: 1,
+  id: '1',
   title: '',
   level: 'critical',
   status: 'unsupported',
@@ -24,14 +24,11 @@ const validation = (state) => {
     status: !!state.status && ['unsupported', 'in_progress', 'completed'].indexOf(state.status) >= 0,
     description: !!state.description,
     person: !!state.person,
-    totalResult: false,
   };
-  result.totalResult = result.title
-    && result.level
-    && result.status
-    && result.description
-    && result.person;
-  return result;
+  const totalResult = Object.keys(result).every(item => {
+    return result[item];
+  })
+  return Object.assign({}, result, { totalResult });
 };
 
 const incidentCreateForm = (state = initialState, action) => {
@@ -44,7 +41,7 @@ const incidentCreateForm = (state = initialState, action) => {
       return Object.assign({}, newState, { validationResult });
     }
     case 'ADD_INCIDENT':
-      return Object.assign({}, initialState, { id: state.id + 1 });
+      return Object.assign({}, initialState, { id: String(state.id + 1) });
     default:
       return state;
   }

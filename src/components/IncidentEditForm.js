@@ -26,49 +26,70 @@ const IncidentEditForm = ({
   editIncident,
 }) => (
   <section className="col-4">
-    <ul className="incident">
-      <li className="incident__item-header">Title</li>
-      <li className="incident__item-value">
-        <input
-          type="text"
-          name="title"
-          value={incidentEditForm.title}
-          onChange={event => updateIncidentEditForm(event)}
-        />
-      </li>
-      <li className="incident__item-header">Level</li>
-      <li className="incident__item-value">
-        <select name="level" value={incidentEditForm.level} onChange={event => updateIncidentEditForm(event)}>
-          { createOptions(levelItems) }
-        </select>
-      </li>
-      <li className="incident__item-header">Status</li>
-      <li className="incident__item-value">
-        <select name="status" value={incidentEditForm.status} onChange={event => updateIncidentEditForm(event)}>
-          { createOptions(statusItems) }
-        </select>
-      </li>
-      <li className="incident__item-header">Description</li>
-      <li className="incident__item-value">
-        <textarea
-          name="description"
-          value={incidentEditForm.description}
-          onChange={event => updateIncidentEditForm(event)}
-        />
-      </li>
-      <li className="incident__item-header">Person</li>
-      <li className="incident__item-value">
-        <input
-          type="text"
-          name="person"
-          value={incidentEditForm.person}
-          onChange={event => updateIncidentEditForm(event)}
-        />
-      </li>
-      <li className="incident__item-button">
-        <button onClick={() => editIncident(incidentEditForm)}>Create</button>
-      </li>
-    </ul>
+    <div className="incidentForm">
+      <ul className="incidentForm__container">
+        <li className="incidentForm__container__item-header">Title</li>
+        <li className="incidentForm__container__item-value">
+          <input
+            type="text"
+            className="incidentForm__container__item-value__input"
+            name="title"
+            value={incidentEditForm.title}
+            onChange={event => updateIncidentEditForm(event)}
+          />
+        </li>
+        <li className="incidentForm__container__item-header">Level</li>
+        <li className="incidentForm__container__item-value">
+          <select
+            name="level"
+            className="incidentForm__container__item-value__select"
+            value={incidentEditForm.level}
+            onChange={event => updateIncidentEditForm(event)}
+          >
+            { createOptions(levelItems) }
+          </select>
+        </li>
+        <li className="incidentForm__container__item-header">Status</li>
+        <li className="incidentForm__container__item-value">
+          <select
+            name="status"
+            className="incidentForm__container__item-value__select"
+            value={incidentEditForm.status}
+            onChange={event => updateIncidentEditForm(event)}
+          >
+            { createOptions(statusItems) }
+          </select>
+        </li>
+        <li className="incidentForm__container__item-header">Description</li>
+        <li className="incidentForm__container__item-value">
+          <textarea
+            name="description"
+            className="incidentForm__container__item-value__textarea"
+            value={incidentEditForm.description}
+            onChange={event => updateIncidentEditForm(event)}
+          />
+        </li>
+        <li className="incidentForm__container__item-header">Person</li>
+        <li className="incidentForm__container__item-value">
+          <input
+            type="text"
+            className="incidentForm__container__item-value__input"
+            name="person"
+            value={incidentEditForm.person}
+            onChange={event => updateIncidentEditForm(event)}
+          />
+        </li>
+        <li className="incidentForm__container__item-button">
+          <button
+            className="incidentForm__container__item-button__decision"
+            onClick={() => editIncident(incidentEditForm)}
+            disabled={(!incidentEditForm.validationResult.totalResult)}
+          >
+            Edit
+          </button>
+        </li>
+      </ul>
+    </div>
   </section>
 );
 

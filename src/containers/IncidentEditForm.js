@@ -5,17 +5,9 @@ import { editIncident, updateIncidentEditForm } from '../modules/incidentEditFor
 
 const mapStateToProps = (
   state,
-  ownProps,
-) => {
-  const res = state.incidentList.map((incident) => {
-    return (incident.id === ownProps.incidentId)
-      ? incident
-      : undefined;
-  });
-  return {
-    incidentEditForm: state.incidentEditForm,
-  };
-};
+) => ({
+  incidentEditForm: state.incidentEditForm,
+});
 
 const mapDispatchToProps = dispatch => ({
   ...bindActionCreators(

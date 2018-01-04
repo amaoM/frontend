@@ -53,28 +53,6 @@
   }
 }
 
-.incident {
-  padding: 10px;
-  border: 1px solid #ddd;
-
-  &__item-header {
-    font-weight: bold;
-  }
-
-  &__item-value {
-    word-wrap: break-word;
-
-    &:not(:last-child) {
-      padding-bottom: 10px;
-    }
-
-    .fas {
-      padding-left: 5px;
-      cursor: pointer;
-    }
-  }
-}
-
 footer.container-fluid {
   bottom: 0;
   position: fixed;

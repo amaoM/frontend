@@ -1,15 +1,7 @@
-const initialState = {
-  title: '',
-  level: 'critical',
-  status: 'unsupported',
-  description: '',
-  person: '',
-};
-
 // Action Creators
-export const editIncident = incidentEditForm => ({
+export const editIncident = incident => ({
   type: 'EDIT_INCIDENT',
-  incidentEditForm,
+  incident,
 });
 
 export const updateIncidentEditForm = event => ({
@@ -25,17 +17,15 @@ const validation = (state) => {
     status: !!state.status && ['unsupported', 'in_progress', 'completed'].indexOf(state.status) >= 0,
     description: !!state.description,
     person: !!state.person,
-    totalResult: false,
   };
-  result.totalResult = result.title
-    && result.level
-    && result.status
-    && result.description
-    && result.person;
-  return result;
+  const totalResult = Object.keys(result).every(item => {
+    return result[item];
+  })
+  console.log(state);
+  return Object.assign({}, result, { totalResult });
 };
 
-const incidentEditForm = (state = initialState, action) => {
+const incidentEditForm = (state = {}, action) => {
   switch (action.type) {
     case 'UPDATE_INCIDENT_EDIT_FORM': {
       const newState = Object.assign({}, state, {
@@ -45,18 +35,8 @@ const incidentEditForm = (state = initialState, action) => {
       return Object.assign({}, newState, { validationResult });
     }
     case 'EDIT_INCIDENT': {
-      const validationResult = validation(state);
-      const editedIncident = (validationResult.totalResult)
-        ? {
-          id: state.id,
-          title: state.title,
-          level: state.level,
-          status: state.status,
-          description: state.description,
-          person: state.person,
-        }
-        : undefined;
-      return Object.assign({}, state, { validationResult, newIncident });
+      const validationResult = validation(action.incident);
+      return Object.assign({}, action.incident, { validationResult });
     }
     default:
       return state;
