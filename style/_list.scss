@@ -1,21 +1,66 @@
-.incident {
-  padding: 10px;
-  border: 1px solid #ddd;
+.search {
+  &__form {
+    padding: 10px;
+    border: 1px solid #ddd;
 
-  &__item-header {
-    font-weight: bold;
-  }
-
-  &__item-value {
-    word-wrap: break-word;
-
-    &:not(:last-child) {
-      padding-bottom: 10px;
+    &__select {
+      margin-right: 5px;
     }
 
-    .fas {
-      padding-left: 5px;
-      cursor: pointer;
+    &__input {
+      margin-right: 5px;
+      padding: 5px;
+    }
+  }
+}
+
+.incidentForm {
+  border: 1px solid #ddd;
+
+  &__container {
+    padding: 10px;
+
+    &__item-header {
+      font-weight: bold;
+      padding-bottom: 5px;
+    }
+
+    &__item-value {
+      word-wrap: break-word;
+
+      &:not(:last-child) {
+        padding-bottom: 20px;
+      }
+
+      &__input {
+        width: 100%;
+        padding: 5px;
+      }
+
+      &__textarea {
+        width: 100%;
+        height: 100px;
+      }
+
+      .fas {
+        padding-left: 5px;
+        cursor: pointer;
+      }
+    }
+
+    &__item-button {
+      &__decision {
+        padding: 10px;
+        background-color: #f1f5ff;
+        border: 1px solid #ddd;
+        cursor: pointer;
+        &:hover {
+          background: rgba(#f1f5ff,0.7);
+        }
+        &:disabled {
+          background-color: #ddd;
+        }
+      }
     }
   }
 }

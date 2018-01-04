@@ -1,26 +1,27 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import IncidentEditForm from '../components/IncidentEditForm';
-import * as actions from '../actions/incident';
+import { editIncident, updateIncidentEditForm } from '../modules/incidentEditForm';
 
 const mapStateToProps = (
   state,
   ownProps,
 ) => {
   const res = state.incidentList.map((incident) => {
-    if (incident.id === ownProps.incidentId) {
-      console.log(incident);
-      return incident;
-    }
+    return (incident.id === ownProps.incidentId)
+      ? incident
+      : undefined;
   });
-  console.log(res);
   return {
     incidentEditForm: state.incidentEditForm,
   };
 };
 
 const mapDispatchToProps = dispatch => ({
-  ...bindActionCreators(actions, dispatch),
+  ...bindActionCreators(
+    { editIncident, updateIncidentEditForm },
+    dispatch,
+  ),
 });
 
 const VisibleIncidentEditForm = connect(

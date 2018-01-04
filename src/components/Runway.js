@@ -1,11 +1,9 @@
 import React from 'react';
-import VisibleSearch from '../containers/Search';
-import IncidentContainer from '../components/IncidentContainer';
+import IncidentListContainer from '../components/IncidentListContainer';
 
 const Runway = () => (
   <main className="container">
-    <VisibleSearch />
-    <IncidentContainer />
+    <IncidentListContainer />
   </main>
 );
 

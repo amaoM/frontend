@@ -1,24 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+// import { lifecycle } from 'recompose';
 import VisibleIncident from '../containers/Incident';
 
 const IncidentList = ({
   incidentList,
 }) => (
-  <section className="col-8">
+  <section className="col-8 incident-list">
     <table className="table">
       <thead className="table__head">
         <tr className="table__head__row">
-          <th className="table__head__row__item" width="20%">Level</th>
-          <th className="table__head__row__item" width="20%">Status</th>
-          <th className="table__head__row__item" width="50%">Title</th>
+          <th className="table__head__row__item" width="5%" />
+          <th className="table__head__row__item" width="10%">ID</th>
+          <th className="table__head__row__item" width="15%">Level</th>
+          <th className="table__head__row__item" width="15%">Status</th>
+          <th className="table__head__row__item" width="45%">Title</th>
           <th className="table__head__row__item" width="10%">Person</th>
         </tr>
       </thead>
       <tbody className="table__body">
         {incidentList.map(incident => (
           <VisibleIncident
-            key={incident.title}
+            key={incident.id}
             {...incident}
           />
         ))}
@@ -26,6 +29,15 @@ const IncidentList = ({
     </table>
   </section>
 );
+
+// export default lifecycle({
+//   componentWillMount() {
+//     console.log('componentWillMount');
+//   },
+//   componentWillUpdate(nextProps) {
+//     console.log('componentWillUpdate');
+//   },
+// })(IncidentList);
 
 IncidentList.propTypes = {
   incidentList: PropTypes.arrayOf(PropTypes.shape({

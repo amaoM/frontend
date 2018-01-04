@@ -2,8 +2,18 @@ import incident from './incident';
 
 const initialState = [];
 
-let newIncidentId = 0;
+// Action Creators
+export const searchIncident = event => ({
+  type: 'SEARCH_KEYWORD',
+  event,
+});
 
+export const addIncident = incidentCreateForm => ({
+  type: 'ADD_INCIDENT',
+  incidentCreateForm,
+});
+
+// Reducer
 const incidentList = (
   state = initialState,
   action,
@@ -11,11 +21,10 @@ const incidentList = (
   switch (action.type) {
     case 'SEARCH_KEYWORD':
       return state.map(t => incident(t, action));
-    case 'CREATE_INCIDENT':
-      newIncidentId += 1;
+    case 'ADD_INCIDENT':
       return [
         ...state,
-        Object.assign({}, { id: newIncidentId }, action.incidentCreateForm),
+        action.incidentCreateForm,
       ];
     default:
       return state;

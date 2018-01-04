@@ -13,6 +13,7 @@ const Incident = ({
   if (status === 'completed') rowClassName = 'table__body__row table__body__row--completed';
   return (
     <tr className={rowClassName} key={id} onClick={() => browserHistory.push(`/detail/${id}`)}>
+      <td className="table__body__row__item table__body__row__item--center"><i className="fas fa-bars" /></td>
       <td className="table__body__row__item table__body__row__item--center">{id}</td>
       <td className="table__body__row__item table__body__row__item--center">{level}</td>
       <td className="table__body__row__item table__body__row__item--center">{status}</td>

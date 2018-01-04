@@ -1,14 +1,18 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import IncidentCreateForm from '../components/IncidentCreateForm';
-import * as actions from '../actions/incident';
+import { updateIncidentCreateForm } from '../modules/incidentCreateForm';
+import { addIncident } from '../modules/incidentList';
 
 const mapStateToProps = state => ({
   incidentCreateForm: state.incidentCreateForm,
 });
 
 const mapDispatchToProps = dispatch => ({
-  ...bindActionCreators(actions, dispatch),
+  ...bindActionCreators(
+    { updateIncidentCreateForm, addIncident },
+    dispatch,
+  ),
 });
 
 const VisibleIncidentCreateForm = connect(

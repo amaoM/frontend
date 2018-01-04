@@ -4,6 +4,13 @@ const initialState = {
   status: 'all',
 };
 
+// Action Creators
+export const searchIncident = event => ({
+  type: 'SEARCH_KEYWORD',
+  event,
+});
+
+// Reducer
 const search = (
   state = initialState,
   action,

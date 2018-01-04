@@ -1,22 +1,26 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import IncidentList from '../components/IncidentList';
-import * as actions from '../actions/incident';
+import { addIncident } from '../modules/incidentList';
 
-const searchIncident = (incidentList, search) => {
+const search = (incidentList, incidentSearchForm) => {
   let result = incidentList;
-  if (search.keyword !== '') result = result.filter(t => (t.title.includes(search.keyword)));
-  if (search.status !== 'all') result = result.filter(t => (t.status === search.status));
-  if (search.level !== 'all') result = result.filter(t => (t.level === search.level));
+  if (incidentSearchForm.keyword !== '') result = result.filter(t => (t.title.includes(incidentSearchForm.keyword)));
+  if (incidentSearchForm.status !== 'all') result = result.filter(t => (t.status === incidentSearchForm.status));
+  if (incidentSearchForm.level !== 'all') result = result.filter(t => (t.level === incidentSearchForm.level));
   return result;
 };
 
 const mapStateToProps = state => ({
-  incidentList: searchIncident(state.incidentList, state.search),
+  incidentList: search(state.incidentList, state.incidentSearchForm),
+  incidentCreateForm: state.incidentCreateForm,
 });
 
 const mapDispatchToProps = dispatch => ({
-  ...bindActionCreators(actions, dispatch),
+  ...bindActionCreators(
+    { addIncident },
+    dispatch,
+  ),
 });
 
 const VisibleIncidentList = connect(

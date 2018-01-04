@@ -27,30 +27,31 @@ const createOptions = (
   return options;
 };
 
-const Search = ({
-  search,
+const IncidentSearchForm = ({
+  incidentSearchForm,
   searchIncident,
 }) => (
-  <div className="row">
-    <section className="search col">
+  <section className="col search">
+    <div className="search__form">
       <input
         type="text"
+        className="search__form__input"
         name="keyword"
-        value={search.keyword}
-        onChange={event => searchIncident(event, search)}
+        value={incidentSearchForm.keyword}
+        onChange={event => searchIncident(event, incidentSearchForm)}
       />
-      <select name="level" onChange={event => searchIncident(event, search)}>
-        { createOptions(search.level, levelItems) }
+      <select className="search__form__select" name="level" onChange={event => searchIncident(event, incidentSearchForm)}>
+        { createOptions(incidentSearchForm.level, levelItems) }
       </select>
-      <select name="status" onChange={event => searchIncident(event, search)}>
-        { createOptions(search.status, statusItems) }
+      <select className="search__form__select" name="status" onChange={event => searchIncident(event, incidentSearchForm)}>
+        { createOptions(incidentSearchForm.status, statusItems) }
       </select>
-    </section>
-  </div>
+    </div>
+  </section>
 );
 
-Search.propTypes = {
-  search: PropTypes.shape({
+IncidentSearchForm.propTypes = {
+  incidentSearchForm: PropTypes.shape({
     keyword: PropTypes.string.isRequired,
     level: PropTypes.string.isRequired,
     status: PropTypes.string.isRequired,
@@ -58,4 +59,4 @@ Search.propTypes = {
   searchIncident: PropTypes.func.isRequired,
 };
 
-export default Search;
+export default IncidentSearchForm;
