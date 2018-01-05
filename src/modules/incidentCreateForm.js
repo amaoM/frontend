@@ -39,7 +39,7 @@ const incidentCreateForm = (state = initialState, action) => {
       return Object.assign({}, newState, { validationResult });
     }
     case 'ADD_INCIDENT':
-      return Object.assign({}, initialState, { id: String(state.id + 1) });
+      return Object.assign({}, initialState, { id: String(Number(state.id) + 1) });
     default:
       return state;
   }
