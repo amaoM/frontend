@@ -1,21 +1,18 @@
 import React from 'react';
+import IncidentTimeLineEvent from '../components/IncidentTimeLineEvent';
 
-const IncidentTimeLine = () => (
+const IncidentTimeLine = ({
+  incidentTimeLine,
+}) => (
   <div className="col-8">
     <section className="timeline-box">
       <section className="timeline">
-        <section className="event">
-          <div className="time">19:00</div>
-          <div className="text">ステータスを更新しました。</div>
-        </section>
-        <section className="event">
-          <div className="time">19:00</div>
-          <div className="text">ステータスを更新しました。</div>
-        </section>
-        <section className="event">
-          <div className="time">19:00</div>
-          <div className="text">ステータスを更新しました。</div>
-        </section>
+        {incidentTimeLine.map(timeLineEvent => (
+          <IncidentTimeLineEvent
+            key={`IncidentTimeLineEvent${timeLineEvent.id}`}
+            {...timeLineEvent}
+          />
+        ))}
       </section>
     </section>
   </div>

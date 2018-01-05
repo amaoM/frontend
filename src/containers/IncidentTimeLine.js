@@ -1,22 +1,11 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import IncidentTimeLine from '../components/IncidentTimeLine';
-import { showTimeLine, updateTimeLine } from '../modules/incidentTimeLine';
 
 const mapStateToProps = state => ({
-  timeline: state.timeline,
+  incidentTimeLine: state.incidentTimeLine,
 });
 
-const mapDispatchToProps = dispatch => ({
-  ...bindActionCreators(
-    { showTimeLine, updateTimeLine },
-    dispatch,
-  ),
-});
-
-const VisibleIncidentTimeLine = connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(IncidentTimeLine);
+const VisibleIncidentTimeLine = connect(mapStateToProps)(IncidentTimeLine);
 
 export default VisibleIncidentTimeLine;

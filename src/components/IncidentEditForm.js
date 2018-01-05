@@ -23,7 +23,8 @@ const createOptions = (items) => {
 const IncidentEditForm = ({
   incidentEditForm,
   updateIncidentEditForm,
-  editIncident,
+  updateIncident,
+  addIncidentTimeLineEvent,
 }) => (
   <section className="col-4">
     <div className="incidentForm">
@@ -82,7 +83,10 @@ const IncidentEditForm = ({
         <li className="incidentForm__container__item-button">
           <button
             className="incidentForm__container__item-button__decision"
-            onClick={() => editIncident(incidentEditForm)}
+            onClick={() => {
+              updateIncident(incidentEditForm);
+              addIncidentTimeLineEvent();
+            }}
             disabled={(!incidentEditForm.validationResult.totalResult)}
           >
             Edit
@@ -102,7 +106,8 @@ IncidentEditForm.propTypes = {
     person: PropTypes.string.isRequired,
   }).isRequired,
   updateIncidentEditForm: PropTypes.func.isRequired,
-  editIncident: PropTypes.func.isRequired,
+  updateIncident: PropTypes.func.isRequired,
+  addIncidentTimeLineEvent: PropTypes.func.isRequired,
 };
 
 export default IncidentEditForm;

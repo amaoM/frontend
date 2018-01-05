@@ -21,7 +21,7 @@ const IncidentList = ({
       <tbody className="table__body">
         {incidentList.map(incident => (
           <VisibleIncident
-            key={incident.id}
+            key={`VisibleIncident${incident.id}`}
             {...incident}
           />
         ))}
