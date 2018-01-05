@@ -3,9 +3,7 @@ import { connect } from 'react-redux';
 import IncidentEditForm from '../components/IncidentEditForm';
 import { editIncident, updateIncidentEditForm } from '../modules/incidentEditForm';
 
-const mapStateToProps = (
-  state,
-) => ({
+const mapStateToProps = state => ({
   incidentEditForm: state.incidentEditForm,
 });
 

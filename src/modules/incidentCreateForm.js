@@ -25,9 +25,7 @@ const validation = (state) => {
     description: !!state.description,
     person: !!state.person,
   };
-  const totalResult = Object.keys(result).every(item => {
-    return result[item];
-  })
+  const totalResult = Object.keys(result).every(item => (result[item]));
   return Object.assign({}, result, { totalResult });
 };
 
