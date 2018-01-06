@@ -1,3 +1,4 @@
+const webpack = require("webpack");
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
@@ -36,6 +37,9 @@ module.exports = [{
     ],
   },
   devtool: '#inline-source-map',
+  plugins: [
+    new webpack.optimize.UglifyJsPlugin()
+  ],
 },
 {
   entry: './app.scss',
