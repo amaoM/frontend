@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import { lifecycle } from 'recompose';
-import VisibleIncident from '../containers/Incident';
+import Incident from '../components/Incident';
 
 const IncidentList = ({
   incidentList,
@@ -20,8 +19,8 @@ const IncidentList = ({
       </thead>
       <tbody className="table__body">
         {incidentList.map(incident => (
-          <VisibleIncident
-            key={`VisibleIncident${incident.id}`}
+          <Incident
+            key={`Incident${incident.id}`}
             {...incident}
           />
         ))}
@@ -29,15 +28,6 @@ const IncidentList = ({
     </table>
   </section>
 );
-
-// export default lifecycle({
-//   componentWillMount() {
-//     console.log('componentWillMount');
-//   },
-//   componentWillUpdate(nextProps) {
-//     console.log('componentWillUpdate');
-//   },
-// })(IncidentList);
 
 IncidentList.propTypes = {
   incidentList: PropTypes.arrayOf(PropTypes.shape({

@@ -10,11 +10,6 @@ const getTimeLineDate = () => {
 };
 
 // Action Creators
-export const showTimeLine = incidentId => ({
-  type: 'SHOW_TIMELINE',
-  incidentId,
-});
-
 export const addIncidentTimeLineEvent = () => {
   const timelineDate = getTimeLineDate();
   return {
@@ -30,8 +25,6 @@ const incidentTimeLine = (
   action,
 ) => {
   switch (action.type) {
-    case 'SHOW_TIMELINE':
-      return state;
     case 'ADD_INCIDENT_TIMELINE_EVENT':
       return [...state, { time: action.time, message: action.message }];
     default:
