@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Incident from '../components/Incident';
+import VisibleIncident from '../containers/Incident';
 
 const IncidentList = ({
   incidentList,
@@ -19,8 +19,8 @@ const IncidentList = ({
       </thead>
       <tbody className="table__body">
         {incidentList.map(incident => (
-          <Incident
-            key={`Incident${incident.id}`}
+          <VisibleIncident
+            key={`VisibleIncident${incident.id}`}
             {...incident}
           />
         ))}
@@ -36,6 +36,7 @@ IncidentList.propTypes = {
     title: PropTypes.string.isRequired,
     person: PropTypes.string.isRequired,
   }).isRequired).isRequired,
+  editIncident: PropTypes.func.isRequired,
 };
 
 export default IncidentList;

@@ -3,15 +3,13 @@ import PropTypes from 'prop-types';
 import VisibleIncidentTimeLine from '../containers/IncidentTimeLine';
 import VisibleIncidentEditForm from '../containers/IncidentEditForm';
 
-const IncidentDetailContainer = ({ incidentId }) => (
+const IncidentDetailContainer = ({
+  initialIncident,
+}) => (
   <div className="row">
     <VisibleIncidentTimeLine />
-    <VisibleIncidentEditForm incidentId={incidentId} />
+    <VisibleIncidentEditForm initialIncident={initialIncident} />
   </div>
 );
-
-IncidentDetailContainer.propTypes = {
-  incidentId: PropTypes.string.isRequired,
-};
 
 export default IncidentDetailContainer;

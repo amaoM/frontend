@@ -1,5 +1,15 @@
 const initialState = [];
 
+// Action Creators
+export const addIncidentTimeLineEvent = (initialIncident, incidentEditForm) => {
+  return {
+    type: 'ADD_INCIDENT_TIMELINE_EVENT',
+    initialIncident,
+    incidentEditForm,
+  };
+};
+
+// Reducer
 const getTimeLineDate = () => {
   const date = new Date();
   let format = 'hh:mm:ss';
@@ -9,24 +19,25 @@ const getTimeLineDate = () => {
   return format;
 };
 
-// Action Creators
-export const addIncidentTimeLineEvent = () => {
-  const timelineDate = getTimeLineDate();
-  return {
-    type: 'ADD_INCIDENT_TIMELINE_EVENT',
-    time: timelineDate,
-    message: 'ステータスを更新しました。',
-  };
-};
+const compareIncidents = (incidentEditForm, initialIncident) => {
+  let offsetMessage = {};
+  if (incidentEditForm.title !== initialIncident.title) offsetMessage['title'] = `Title: ${initialIncident.title} -> ${incidentEditForm.title}`;
+  if (incidentEditForm.level !== initialIncident.level) offsetMessage['level'] = `Level: ${initialIncident.level} -> ${incidentEditForm.level}`;
+  if (incidentEditForm.status !== initialIncident.status) offsetMessage['status'] = `Status: ${initialIncident.status} -> ${incidentEditForm.status}`;
+  if (incidentEditForm.description !== initialIncident.description) offsetMessage['description'] = 'Description was updated.';
+  if (incidentEditForm.person !== initialIncident.person) offsetMessage['person'] = `Person: ${initialIncident.person} -> ${incidentEditForm.person}`;
+  return offsetMessage;
+}
 
-// Reducer
 const incidentTimeLine = (
   state = initialState,
   action,
 ) => {
   switch (action.type) {
     case 'ADD_INCIDENT_TIMELINE_EVENT':
-      return [...state, { time: action.time, message: action.message }];
+      const timelineDate = getTimeLineDate();
+      const offsetMessage = compareIncidents(action.incidentEditForm, action.initialIncident);
+      return [...state, { timelineDate, offsetMessage }];
     default:
       return state;
   }

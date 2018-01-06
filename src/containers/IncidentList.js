@@ -1,7 +1,6 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import IncidentList from '../components/IncidentList';
-import { addIncident } from '../modules/incidentList';
 
 const search = (incidentList, incidentSearchForm) => {
   let result = incidentList;
@@ -16,16 +15,6 @@ const mapStateToProps = state => ({
   incidentCreateForm: state.incidentCreateForm,
 });
 
-const mapDispatchToProps = dispatch => ({
-  ...bindActionCreators(
-    { addIncident },
-    dispatch,
-  ),
-});
-
-const VisibleIncidentList = connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(IncidentList);
+const VisibleIncidentList = connect(mapStateToProps)(IncidentList);
 
 export default VisibleIncidentList;

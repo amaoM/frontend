@@ -21,6 +21,7 @@ const createOptions = (items) => {
 };
 
 const IncidentEditForm = ({
+  initialIncident,
   incidentEditForm,
   updateIncidentEditForm,
   updateIncident,
@@ -85,7 +86,7 @@ const IncidentEditForm = ({
             className="incidentForm__container__item-button__decision"
             onClick={() => {
               updateIncident(incidentEditForm);
-              addIncidentTimeLineEvent();
+              addIncidentTimeLineEvent(initialIncident, incidentEditForm);
             }}
             disabled={(!incidentEditForm.validationResult.totalResult)}
           >
