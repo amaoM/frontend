@@ -36,7 +36,6 @@ IncidentList.propTypes = {
     title: PropTypes.string.isRequired,
     person: PropTypes.string.isRequired,
   }).isRequired).isRequired,
-  editIncident: PropTypes.func.isRequired,
 };
 
 export default IncidentList;

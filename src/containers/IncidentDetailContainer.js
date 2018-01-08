@@ -7,7 +7,7 @@ const searchIncidentById = (incidentList, targetIncidentId) => {
     if (incident.id === targetIncidentId) return incident;
   }
   return undefined;
-}
+};
 
 const mapStateToProps = (
   state,

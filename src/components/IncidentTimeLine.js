@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import IncidentTimeLineEvent from '../components/IncidentTimeLineEvent';
 
 const IncidentTimeLine = ({
@@ -17,5 +18,12 @@ const IncidentTimeLine = ({
     </section>
   </div>
 );
+
+IncidentTimeLine.propTypes = {
+  incidentTimeLine: PropTypes.arrayOf(PropTypes.shape({
+    timelineDate: PropTypes.string.isRequired,
+    offsetMessage: PropTypes.shape().isRequired,
+  }).isRequired).isRequired,
+};
 
 export default IncidentTimeLine;
