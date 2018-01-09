@@ -11,7 +11,6 @@ const search = (incidentList, incidentSearchForm) => {
 
 const mapStateToProps = state => ({
   incidentList: search(state.incidentList, state.incidentSearchForm),
-  incidentCreateForm: state.incidentCreateForm,
 });
 
 const VisibleIncidentList = connect(mapStateToProps)(IncidentList);

@@ -11,35 +11,35 @@ import Incident from '../../src/components/Incident';
 
 describe('component::IncidentList', () => {
   it('test', () => {
-    const incidents = [
+    const incidentList = [
       {
         id: 1,
-        status: 'up',
-        title: 'title1',
-        person: 'person1',
-        toggleStatus: 'down',
-        onChangeStatus: spy(),
+        level: 'critical',
+        status: 'unsupported',
+        title: 'Blah blah blah',
+        description: 'Blah blah blah',
+        person: 'person',
       },
       {
         id: 2,
-        status: 'up',
-        title: 'title2',
-        person: 'person1',
-        toggleStatus: 'down',
-        onChangeStatus: spy(),
+        level: 'critical',
+        status: 'unsupported',
+        title: 'Blah blah blah',
+        description: 'Blah blah blah',
+        person: 'person',
       },
       {
         id: 3,
-        status: 'up',
-        title: 'title3',
-        person: 'person1',
-        toggleStatus: 'down',
-        onChangeStatus: spy(),
+        level: 'critical',
+        status: 'unsupported',
+        title: 'Blah blah blah',
+        description: 'Blah blah blah',
+        person: 'person',
       },
     ];
     const mockStore = configureMockStore([thunk]);
-    const store = mockStore({ incidents });
-    const wrapper = mount(<Provider store={store}><IncidentList incidents={incidents} /></Provider>);
+    const store = mockStore({ incidentList });
+    const wrapper = mount(<Provider store={store}><IncidentList incidentList={incidentList} /></Provider>);
     expect(wrapper.find(Incident)).to.have.length(3);
   });
 });
