@@ -37,7 +37,7 @@ const IncidentEditForm = ({
             className="incidentForm__container__item-value__input"
             name="title"
             value={incidentEditForm.title}
-            onChange={event => updateIncidentEditForm(event)}
+            onChange={event => updateIncidentEditForm(event, initialIncident)}
           />
         </li>
         <li className="incidentForm__container__item-header">Level</li>
@@ -46,7 +46,7 @@ const IncidentEditForm = ({
             name="level"
             className="incidentForm__container__item-value__select"
             value={incidentEditForm.level}
-            onChange={event => updateIncidentEditForm(event)}
+            onChange={event => updateIncidentEditForm(event, initialIncident)}
           >
             { createOptions(levelItems) }
           </select>
@@ -57,7 +57,7 @@ const IncidentEditForm = ({
             name="status"
             className="incidentForm__container__item-value__select"
             value={incidentEditForm.status}
-            onChange={event => updateIncidentEditForm(event)}
+            onChange={event => updateIncidentEditForm(event, initialIncident)}
           >
             { createOptions(statusItems) }
           </select>
@@ -68,7 +68,7 @@ const IncidentEditForm = ({
             name="description"
             className="incidentForm__container__item-value__textarea"
             value={incidentEditForm.description}
-            onChange={event => updateIncidentEditForm(event)}
+            onChange={event => updateIncidentEditForm(event, initialIncident)}
           />
         </li>
         <li className="incidentForm__container__item-header">Person</li>
@@ -78,7 +78,7 @@ const IncidentEditForm = ({
             className="incidentForm__container__item-value__input"
             name="person"
             value={incidentEditForm.person}
-            onChange={event => updateIncidentEditForm(event)}
+            onChange={event => updateIncidentEditForm(event, initialIncident)}
           />
         </li>
         <li className="incidentForm__container__item-button">

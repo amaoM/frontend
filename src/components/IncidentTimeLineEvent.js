@@ -5,7 +5,9 @@ const IncidentTimeLineEvent = ({ timelineDate, offsetMessage }) => (
   <section className="event">
     <div className="time">{timelineDate}</div>
     <div className="text">
-      {Object.keys(offsetMessage).map(item => <div>{offsetMessage[item]}</div>)}
+      {Object.keys(offsetMessage).map(item => (
+        <div key={Math.floor(Math.random() * 10000)}>{offsetMessage[item]}</div>
+      ))}
     </div>
   </section>
 );

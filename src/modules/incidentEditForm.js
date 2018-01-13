@@ -4,13 +4,14 @@ export const editIncident = incident => ({
   incident,
 });
 
-export const updateIncidentEditForm = event => ({
+export const updateIncidentEditForm = (event, initialIncident) => ({
   type: 'UPDATE_INCIDENT_EDIT_FORM',
   event,
+  initialIncident,
 });
 
 // Reducer
-const validation = (state) => {
+const validation = (state, initialIncident = null) => {
   const result = {
     title: !!state.title && state.title !== null && state.title !== '',
     level: !!state.level && ['critical', 'warning'].indexOf(state.level) >= 0,
@@ -18,8 +19,17 @@ const validation = (state) => {
     description: !!state.description,
     person: !!state.person,
   };
-  const totalResult = Object.keys(result).every(item => (result[item]));
+  const totalResult = initialIncident &&
+    Object.keys(result).every(item => (result[item])) &&
+    Object.keys(initialIncident).some(item => (
+      state[item] !== initialIncident[item]
+    ));
   return Object.assign({}, result, { totalResult });
+};
+
+const updateState = (state, initialIncident) => {
+  const validationResult = validation(state, initialIncident);
+  return Object.assign({}, state, { validationResult });
 };
 
 const incidentEditForm = (state = {}, action) => {
@@ -28,12 +38,13 @@ const incidentEditForm = (state = {}, action) => {
       const newState = Object.assign({}, state, {
         [action.event.target.name]: action.event.target.value,
       });
-      const validationResult = validation(newState);
-      return Object.assign({}, newState, { validationResult });
+      return updateState(newState, action.initialIncident);
     }
     case 'EDIT_INCIDENT': {
-      const validationResult = validation(action.incident);
-      return Object.assign({}, action.incident, { validationResult });
+      return updateState(action.incident);
+    }
+    case 'ADD_INCIDENT_TIMELINE_EVENT': {
+      return updateState(state);
     }
     default:
       return state;
