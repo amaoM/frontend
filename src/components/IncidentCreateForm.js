@@ -100,6 +100,9 @@ IncidentCreateForm.propTypes = {
     status: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     person: PropTypes.string.isRequired,
+    validationResult: PropTypes.shape({
+      totalResult: PropTypes.bool.isRequired,
+    }),
   }).isRequired,
   updateIncidentCreateForm: PropTypes.func.isRequired,
   addIncident: PropTypes.func.isRequired,

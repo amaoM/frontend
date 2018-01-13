@@ -9,8 +9,8 @@ import { Provider } from 'react-redux';
 import IncidentCreateForm from '../../src/components/IncidentCreateForm';
 
 describe('component::IncidentCreateForm', () => {
-  it('', () => {
-    const incidentCreateForm = {
+  const incidentCreateFormProps = {
+    incidentCreateForm: {
       id: '1',
       title: '',
       level: 'critical',
@@ -20,20 +20,29 @@ describe('component::IncidentCreateForm', () => {
       validationResult: {
         totalResult: false,
       },
-    };
-    const updateIncidentCreateForm = spy();
-    const addIncident = spy();
-    const mockStore = configureMockStore([thunk]);
-    const store = mockStore({});
-    const component = mount(
-      <Provider store={store}>
-        <IncidentCreateForm
-          incidentCreateForm={incidentCreateForm}
-          updateIncidentCreateForm={updateIncidentCreateForm}
-        />
-      </Provider>
-    );
-    component.find('[name="title"].incidentForm__container__item-value__input').simulate('change', {target: {value: 'New Incident'}});
-    expect(updateIncidentCreateForm.calledOnce).to.equal(true);
+    },
+    updateIncidentCreateForm: spy(),
+    addIncident: spy(),
+  };
+  const mockStore = configureMockStore([thunk]);
+  const store = mockStore({});
+  const component = mount(
+    <Provider store={store}>
+      <IncidentCreateForm { ...incidentCreateFormProps }/>
+    </Provider>
+  );
+  describe('About updateIncidentCreateForm action', () => {
+    it('should call updateIncidentCreateForm at once when the title filed is changed', () => {
+      component.find('[name="title"]').simulate('change', {target: {value: 'New Incident'}});
+      expect(incidentCreateFormProps.updateIncidentCreateForm.calledOnce).to.equal(true);
+    });
+    it('should call updateIncidentCreateForm at once when the status filed is changed', () => {
+      component.find('[name="status"]').simulate('select', {target: {value: 'in_progress'}});
+      expect(incidentCreateFormProps.updateIncidentCreateForm.calledOnce).to.equal(true);
+    });
+    it('should call updateIncidentCreateForm at once when the level filed is changed', () => {
+      component.find('[name="level"]').simulate('select', {target: {value: 'critical'}});
+      expect(incidentCreateFormProps.updateIncidentCreateForm.calledOnce).to.equal(true);
+    });
   });
 });
