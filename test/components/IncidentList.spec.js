@@ -13,7 +13,7 @@ describe('component::IncidentList', () => {
   it('test', () => {
     const incidentList = [
       {
-        id: 1,
+        id: '1',
         level: 'critical',
         status: 'unsupported',
         title: 'Blah blah blah',
@@ -21,7 +21,7 @@ describe('component::IncidentList', () => {
         person: 'person',
       },
       {
-        id: 2,
+        id: '2',
         level: 'critical',
         status: 'unsupported',
         title: 'Blah blah blah',
@@ -29,7 +29,7 @@ describe('component::IncidentList', () => {
         person: 'person',
       },
       {
-        id: 3,
+        id: '3',
         level: 'critical',
         status: 'unsupported',
         title: 'Blah blah blah',

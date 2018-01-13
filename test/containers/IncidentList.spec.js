@@ -10,7 +10,7 @@ describe('containers::IncidentList', () => {
   describe('when search with keyword', () => {
     const incidentList = [
       {
-        id: 1,
+        id: '1',
         title: 'Blah blah blah',
         status: 'unsupported',
         level: 'critical',
@@ -27,7 +27,7 @@ describe('containers::IncidentList', () => {
 
     const expected = [
       {
-        id: 1,
+        id: '1',
         title: 'Blah blah blah',
         status: 'unsupported',
         level: 'critical',
@@ -46,7 +46,7 @@ describe('containers::IncidentList', () => {
   describe('when search with each status', () => {
     const incidentList = [
       {
-        id: 1,
+        id: '1',
         title: 'Blah blah blah',
         status: 'unsupported',
         level: 'critical',
@@ -54,7 +54,7 @@ describe('containers::IncidentList', () => {
         person: 'person',
       },
       {
-        id: 2,
+        id: '2',
         title: 'Blah blah blah',
         status: 'in_progress',
         level: 'critical',
@@ -62,7 +62,7 @@ describe('containers::IncidentList', () => {
         person: 'person',
       },
       {
-        id: 3,
+        id: '3',
         title: 'Blah blah blah',
         status: 'completed',
         level: 'critical',
@@ -74,9 +74,9 @@ describe('containers::IncidentList', () => {
     it('should render data that include specified status', () => {
       const mockStore = configureMockStore([thunk]);
       const statusList = [
-        [1, 'unsupported'],
-        [2, 'in_progress'],
-        [3, 'completed'],
+        ['1', 'unsupported'],
+        ['2', 'in_progress'],
+        ['3', 'completed'],
       ];
       statusList.forEach((row) => {
         const incidentSearchForm = {
@@ -104,7 +104,7 @@ describe('containers::IncidentList', () => {
   describe('when search with each level', () => {
     const incidentList = [
       {
-        id: 1,
+        id: '1',
         title: 'Blah blah blah',
         status: 'unsupported',
         level: 'critical',
@@ -112,7 +112,7 @@ describe('containers::IncidentList', () => {
         person: 'person',
       },
       {
-        id: 2,
+        id: '2',
         title: 'Blah blah blah',
         status: 'unsupported',
         level: 'warning',
@@ -124,8 +124,8 @@ describe('containers::IncidentList', () => {
     it('should render data that include specified level', () => {
       const mockStore = configureMockStore([thunk]);
       const levelList = [
-        [1, 'critical'],
-        [2, 'warning'],
+        ['1', 'critical'],
+        ['2', 'warning'],
       ];
       levelList.forEach((row) => {
         const incidentSearchForm = {
@@ -153,6 +153,7 @@ describe('containers::IncidentList', () => {
   describe('when search with multiple conditions', () => {
     const incidentList = [
       {
+        id: '1',
         title: 'Blah blah blah',
         status: 'unsupported',
         level: 'critical',
@@ -160,6 +161,7 @@ describe('containers::IncidentList', () => {
         person: 'person',
       },
       {
+        id: '2',
         title: 'Blah blah blahlah',
         status: 'in_progress',
         level: 'completed',
@@ -177,6 +179,7 @@ describe('containers::IncidentList', () => {
       }
       const expected = [
         {
+          id: '2',
           title: 'Blah blah blahlah',
           status: 'in_progress',
           level: 'completed',

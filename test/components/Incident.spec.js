@@ -2,6 +2,7 @@ import React from 'react';
 import { describe, it } from 'mocha';
 import { expect } from 'chai';
 import { shallow } from 'enzyme';
+import { spy } from 'sinon';
 import Incident from '../../src/components/Incident';
 
 describe('component::Incident', () => {
@@ -13,6 +14,7 @@ describe('component::Incident', () => {
       title: 'Blah blah blah',
       description: 'Blah blah blah',
       person: 'person',
+      editIncident: spy(),
     };
     const component = shallow(<Incident {...state} />);
     expect(component.find('tr.table__body__row.table__body__row--critical')).to.have.length(1);

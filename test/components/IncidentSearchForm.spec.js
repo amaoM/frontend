@@ -10,14 +10,17 @@ import IncidentSearchForm from '../../src/components/IncidentSearchForm';
 
 describe('component::IncidentSearchForm', () => {
   it('should create a search component with setted values', () => {
-    const incidentSearchForm = {
-      keyword: 'test',
-      level: 'critical',
-      status: 'in_progress',
-    };
+    const incidentSearchFormProps = {
+      incidentSearchForm: {
+        keyword: 'test',
+        level: 'critical',
+        status: 'in_progress',
+      },
+      searchIncident: spy(),
+    }
     const mockStore = configureMockStore([thunk]);
-    const store = mockStore({ incidentSearchForm });
-    const component = shallow(<IncidentSearchForm incidentSearchForm={incidentSearchForm} />, { context: store });
+    const store = mockStore({ ...incidentSearchFormProps });
+    const component = shallow(<IncidentSearchForm { ...incidentSearchFormProps } />, { context: store });
     expect(component.find('input[name="keyword"]')).to.have.length(1);
     expect(component.find('select[name="level"]')).to.have.length(1);
     expect(component.find('select[name="status"]')).to.have.length(1);

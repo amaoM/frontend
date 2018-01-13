@@ -31,6 +31,7 @@ const IncidentList = ({
 
 IncidentList.propTypes = {
   incidentList: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
     level: PropTypes.string.isRequired,
     status: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
