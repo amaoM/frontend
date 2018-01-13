@@ -16,7 +16,7 @@ const Incident = ({
   return (
     <tr
       className={rowClassName}
-      key={id}
+      key={`Incident${id}`}
       onClick={() => {
         browserHistory.push(`/detail/${id}`);
         editIncident({

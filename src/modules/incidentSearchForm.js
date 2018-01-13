@@ -6,7 +6,7 @@ const initialState = {
 
 // Action Creators
 export const searchIncident = event => ({
-  type: 'SEARCH_KEYWORD',
+  type: 'SEARCH_INCIDENT',
   event,
 });
 
@@ -16,7 +16,7 @@ const search = (
   action,
 ) => {
   switch (action.type) {
-    case 'SEARCH_KEYWORD': {
+    case 'SEARCH_INCIDENT': {
       switch (action.event.target.name) {
         case 'keyword':
           return Object.assign({}, state, {

@@ -38,12 +38,12 @@ const IncidentSearchForm = ({
         className="search__form__input"
         name="keyword"
         value={incidentSearchForm.keyword}
-        onChange={event => searchIncident(event, incidentSearchForm)}
+        onChange={event => searchIncident(event)}
       />
-      <select className="search__form__select" name="level" onChange={event => searchIncident(event, incidentSearchForm)}>
+      <select className="search__form__select" name="level" onChange={event => searchIncident(event)}>
         { createOptions(incidentSearchForm.level, levelItems) }
       </select>
-      <select className="search__form__select" name="status" onChange={event => searchIncident(event, incidentSearchForm)}>
+      <select className="search__form__select" name="status" onChange={event => searchIncident(event)}>
         { createOptions(incidentSearchForm.status, statusItems) }
       </select>
     </div>
