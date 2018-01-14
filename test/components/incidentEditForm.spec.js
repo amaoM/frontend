@@ -6,53 +6,54 @@ import { spy } from 'sinon';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk'
 import { Provider } from 'react-redux';
-import IncidentCreateForm from '../../src/components/IncidentCreateForm';
+import IncidentEditForm from '../../src/components/IncidentEditForm';
 
-describe('component::IncidentCreateForm', () => {
-  const incidentCreateFormProps = {
-    incidentCreateForm: {
+describe('component::IncidentEditForm', () => {
+  const incidentEditFormProps = {
+    incidentEditForm: {
       id: '1',
-      title: '',
+      title: 'Blah blah blah',
       level: 'critical',
       status: 'unsupported',
-      description: '',
-      person: '',
+      description: 'Blah blah blah',
+      person: 'person',
       validationResult: {
         totalResult: false,
       },
     },
-    updateIncidentCreateForm: spy(),
-    addIncident: spy(),
+    updateIncidentEditForm: spy(),
+    updateIncident: spy(),
+    addIncidentTimeLineEvent: spy(),
   };
   const mockStore = configureMockStore([thunk]);
   const store = mockStore({});
   const component = mount(
     <Provider store={store}>
-      <IncidentCreateForm { ...incidentCreateFormProps }/>
+      <IncidentEditForm { ...incidentEditFormProps }/>
     </Provider>
   );
   describe('when the title filed is changed', () => {
-    it('should call updateIncidentCreateForm at once', () => {
+    it('should call updateIncidentEditForm at once', () => {
       component.find('[name="title"]').simulate('change', {target: {value: 'New Incident'}});
-      expect(incidentCreateFormProps.updateIncidentCreateForm.calledOnce).to.equal(true);
+      expect(incidentEditFormProps.updateIncidentEditForm.calledOnce).to.equal(true);
     });
   });
   describe('when the status filed is changed', () => {
-    it('should call updateIncidentCreateForm at once', () => {
+    it('should call updateIncidentEditForm at once', () => {
       component.find('[name="status"]').simulate('select', {target: {value: 'in_progress'}});
-      expect(incidentCreateFormProps.updateIncidentCreateForm.calledOnce).to.equal(true);
+      expect(incidentEditFormProps.updateIncidentEditForm.calledOnce).to.equal(true);
     });
   });
   describe('when the level filed is changed', () => {
-    it('should call updateIncidentCreateForm at once', () => {
+    it('should call updateIncidentEditForm at once', () => {
       component.find('[name="level"]').simulate('select', {target: {value: 'critical'}});
-      expect(incidentCreateFormProps.updateIncidentCreateForm.calledOnce).to.equal(true);
+      expect(incidentEditFormProps.updateIncidentEditForm.calledOnce).to.equal(true);
     });
   });
-  describe('when the create button is clicked', () => {
-    it('should call addIncident at once', () => {
+  describe('when the edit button is clicked', () => {
+    it('should call updateIncident at once', () => {
       component.find('.incidentForm__container__item-button__decision').simulate('click');
-      expect(incidentCreateFormProps.updateIncidentCreateForm.calledOnce).to.equal(true);
+      expect(incidentEditFormProps.updateIncidentEditForm.calledOnce).to.equal(true);
     });
   });
 });

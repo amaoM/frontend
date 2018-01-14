@@ -17,10 +17,10 @@ const incidentList = (state = initialState, action) => {
     case 'ADD_INCIDENT':
       return [...state, action.incidentCreateForm];
     case 'UPDATE_INCIDENT': {
-      return state.map(t =>
-        (t.id !== action.incidentEditForm.id
-          ? t
-          : Object.assign({}, t, { ...action.incidentEditForm })));
+      return state.map(incident =>
+        (incident.id !== action.incidentEditForm.id
+          ? incident
+          : Object.assign({}, incident, { ...action.incidentEditForm })));
     }
     default:
       return state;

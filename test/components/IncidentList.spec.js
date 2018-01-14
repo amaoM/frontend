@@ -10,36 +10,38 @@ import IncidentList from '../../src/components/IncidentList';
 import Incident from '../../src/components/Incident';
 
 describe('component::IncidentList', () => {
-  it('test', () => {
-    const incidentList = [
-      {
-        id: '1',
-        level: 'critical',
-        status: 'unsupported',
-        title: 'Blah blah blah',
-        description: 'Blah blah blah',
-        person: 'person',
-      },
-      {
-        id: '2',
-        level: 'critical',
-        status: 'unsupported',
-        title: 'Blah blah blah',
-        description: 'Blah blah blah',
-        person: 'person',
-      },
-      {
-        id: '3',
-        level: 'critical',
-        status: 'unsupported',
-        title: 'Blah blah blah',
-        description: 'Blah blah blah',
-        person: 'person',
-      },
-    ];
-    const mockStore = configureMockStore([thunk]);
-    const store = mockStore({ incidentList });
-    const wrapper = mount(<Provider store={store}><IncidentList incidentList={incidentList} /></Provider>);
-    expect(wrapper.find(Incident)).to.have.length(3);
+  describe('when IncidentList is renderd', () => {
+    it('should be rendered id, level, status, title, description and person fields with setted values', () => {
+      const incidentList = [
+        {
+          id: '1',
+          level: 'critical',
+          status: 'unsupported',
+          title: 'Blah blah blah',
+          description: 'Blah blah blah',
+          person: 'person',
+        },
+        {
+          id: '2',
+          level: 'critical',
+          status: 'unsupported',
+          title: 'Blah blah blah',
+          description: 'Blah blah blah',
+          person: 'person',
+        },
+        {
+          id: '3',
+          level: 'critical',
+          status: 'unsupported',
+          title: 'Blah blah blah',
+          description: 'Blah blah blah',
+          person: 'person',
+        },
+      ];
+      const mockStore = configureMockStore([thunk]);
+      const store = mockStore({ incidentList });
+      const wrapper = mount(<Provider store={store}><IncidentList incidentList={incidentList} /></Provider>);
+      expect(wrapper.find(Incident)).to.have.length(3);
+    });
   });
 });
