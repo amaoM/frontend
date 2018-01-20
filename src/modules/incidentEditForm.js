@@ -15,15 +15,18 @@ const validation = (state, initialIncident = null) => {
   const result = {
     title: !!state.title && state.title !== null && state.title !== '',
     level: !!state.level && ['critical', 'warning'].indexOf(state.level) >= 0,
-    status: !!state.status && ['unsupported', 'in_progress', 'completed'].indexOf(state.status) >= 0,
+    status:
+      !!state.status &&
+      ['unsupported', 'in_progress', 'completed'].indexOf(state.status) >= 0,
     description: !!state.description,
     person: !!state.person,
   };
-  const totalResult = initialIncident != null &&
-    Object.keys(result).every(item => (result[item])) &&
-    Object.keys(initialIncident).some(item => (
-      state[item] !== initialIncident[item]
-    ));
+  const totalResult =
+    initialIncident != null &&
+    Object.keys(result).every(item => result[item]) &&
+    Object.keys(initialIncident).some(
+      item => state[item] !== initialIncident[item]
+    );
   return Object.assign({}, result, { totalResult });
 };
 

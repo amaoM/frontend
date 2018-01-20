@@ -2,7 +2,7 @@ import React from 'react';
 import { describe, it } from 'mocha';
 import { expect } from 'chai';
 import configureMockStore from 'redux-mock-store';
-import thunk from 'redux-thunk'
+import thunk from 'redux-thunk';
 import { shallow } from 'enzyme';
 import VisibleIncidentList from '../../src/containers/IncidentList';
 
@@ -23,7 +23,7 @@ describe('containers::IncidentList', () => {
       keyword: 'bla',
       status: 'all',
       level: 'all',
-    }
+    };
 
     const expected = [
       {
@@ -38,7 +38,9 @@ describe('containers::IncidentList', () => {
     it('should render data that include keyword in title', () => {
       const mockStore = configureMockStore([thunk]);
       const store = mockStore({ incidentList, incidentSearchForm });
-      const container = shallow(<VisibleIncidentList />, { context: { store } });
+      const container = shallow(<VisibleIncidentList />, {
+        context: { store },
+      });
       expect(container.props().incidentList).to.deep.equal(expected);
     });
   });
@@ -78,12 +80,12 @@ describe('containers::IncidentList', () => {
         ['2', 'in_progress'],
         ['3', 'completed'],
       ];
-      statusList.forEach((row) => {
+      statusList.forEach(row => {
         const incidentSearchForm = {
           keyword: '',
           status: row[1],
           level: 'all',
-        }
+        };
         const expected = [
           {
             id: row[0],
@@ -95,7 +97,9 @@ describe('containers::IncidentList', () => {
           },
         ];
         const store = mockStore({ incidentList, incidentSearchForm });
-        const container = shallow(<VisibleIncidentList />, { context: { store } });
+        const container = shallow(<VisibleIncidentList />, {
+          context: { store },
+        });
         expect(container.props().incidentList).to.deep.equal(expected);
       });
     });
@@ -123,11 +127,8 @@ describe('containers::IncidentList', () => {
 
     it('should render data that include specified level', () => {
       const mockStore = configureMockStore([thunk]);
-      const levelList = [
-        ['1', 'critical'],
-        ['2', 'warning'],
-      ];
-      levelList.forEach((row) => {
+      const levelList = [['1', 'critical'], ['2', 'warning']];
+      levelList.forEach(row => {
         const incidentSearchForm = {
           keyword: '',
           status: 'unsupported',
@@ -144,7 +145,9 @@ describe('containers::IncidentList', () => {
           },
         ];
         const store = mockStore({ incidentList, incidentSearchForm });
-        const container = shallow(<VisibleIncidentList />, { context: { store } });
+        const container = shallow(<VisibleIncidentList />, {
+          context: { store },
+        });
         expect(container.props().incidentList).to.deep.equal(expected);
       });
     });
@@ -176,7 +179,7 @@ describe('containers::IncidentList', () => {
         keyword: 'hla',
         status: 'all',
         level: 'completed',
-      }
+      };
       const expected = [
         {
           id: '2',
@@ -188,7 +191,9 @@ describe('containers::IncidentList', () => {
         },
       ];
       const store = mockStore({ incidentList, incidentSearchForm });
-      const container = shallow(<VisibleIncidentList />, { context: { store } });
+      const container = shallow(<VisibleIncidentList />, {
+        context: { store },
+      });
       expect(container.props().incidentList).to.deep.equal(expected);
     });
   });

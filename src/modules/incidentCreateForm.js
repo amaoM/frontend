@@ -17,15 +17,17 @@ export const updateIncidentCreateForm = event => ({
 });
 
 // Reducer
-const validation = (state) => {
+const validation = state => {
   const result = {
     title: !!state.title && state.title !== null && state.title !== '',
     level: !!state.level && ['critical', 'warning'].indexOf(state.level) >= 0,
-    status: !!state.status && ['unsupported', 'in_progress', 'completed'].indexOf(state.status) >= 0,
+    status:
+      !!state.status &&
+      ['unsupported', 'in_progress', 'completed'].indexOf(state.status) >= 0,
     description: !!state.description,
     person: !!state.person,
   };
-  const totalResult = Object.keys(result).every(item => (result[item]));
+  const totalResult = Object.keys(result).every(item => result[item]);
   return Object.assign({}, result, { totalResult });
 };
 
@@ -39,7 +41,9 @@ const incidentCreateForm = (state = initialState, action) => {
       return Object.assign({}, newState, { validationResult });
     }
     case 'ADD_INCIDENT':
-      return Object.assign({}, initialState, { id: String(Number(state.id) + 1) });
+      return Object.assign({}, initialState, {
+        id: String(Number(state.id) + 1),
+      });
     default:
       return state;
   }

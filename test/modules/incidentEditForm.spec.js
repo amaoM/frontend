@@ -44,7 +44,7 @@ describe('reducers::incidentEditForm', () => {
             person: true,
             totalResult: false,
           },
-        }
+        },
       };
       const expected = {
         id: '1',
@@ -106,7 +106,7 @@ describe('reducers::incidentEditForm', () => {
             person: true,
             totalResult: false,
           },
-        }
+        },
       };
       const expected = {
         id: '1',
@@ -162,7 +162,7 @@ describe('reducers::incidentEditForm', () => {
             person: true,
             totalResult: true,
           },
-        }
+        },
       };
       const expected = {
         id: '1',

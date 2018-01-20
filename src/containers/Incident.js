@@ -7,9 +7,6 @@ const mapDispatchToProps = dispatch => ({
   ...bindActionCreators({ editIncident }, dispatch),
 });
 
-const VisibleIncident = connect(
-  null,
-  mapDispatchToProps,
-)(Incident);
+const VisibleIncident = connect(null, mapDispatchToProps)(Incident);
 
 export default VisibleIncident;

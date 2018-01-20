@@ -12,7 +12,8 @@ const Incident = ({
   editIncident,
 }) => {
   let rowClassName = `table__body__row table__body__row--${level}`;
-  if (status === 'completed') rowClassName = 'table__body__row table__body__row--completed';
+  if (status === 'completed')
+    rowClassName = 'table__body__row table__body__row--completed';
   return (
     <tr
       className={rowClassName}
@@ -29,12 +30,22 @@ const Incident = ({
         });
       }}
     >
-      <td className="table__body__row__item table__body__row__item--center"><i className="fas fa-bars" /></td>
-      <td className="table__body__row__item table__body__row__item--center">{id}</td>
-      <td className="table__body__row__item table__body__row__item--center">{level}</td>
-      <td className="table__body__row__item table__body__row__item--center">{status}</td>
+      <td className="table__body__row__item table__body__row__item--center">
+        <i className="fas fa-bars" />
+      </td>
+      <td className="table__body__row__item table__body__row__item--center">
+        {id}
+      </td>
+      <td className="table__body__row__item table__body__row__item--center">
+        {level}
+      </td>
+      <td className="table__body__row__item table__body__row__item--center">
+        {status}
+      </td>
       <td className="table__body__row__item">{title}</td>
-      <td className="table__body__row__item table__body__row__item--center">{person}</td>
+      <td className="table__body__row__item table__body__row__item--center">
+        {person}
+      </td>
     </tr>
   );
 };

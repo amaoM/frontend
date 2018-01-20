@@ -1,7 +1,4 @@
-const incident = (
-  state,
-  action,
-) => {
+const incident = (state, action) => {
   switch (action.type) {
     default:
       return state;

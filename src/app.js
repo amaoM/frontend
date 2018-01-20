@@ -21,5 +21,5 @@ ReactDOM.render(
       </Router>
     </main>
   </Provider>,
-  document.getElementById('root'),
+  document.getElementById('root')
 );

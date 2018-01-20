@@ -2,9 +2,8 @@ import React from 'react';
 import { expect } from 'chai';
 import { describe, it } from 'mocha';
 import { mount } from 'enzyme';
-import { spy } from 'sinon';
 import configureMockStore from 'redux-mock-store';
-import thunk from 'redux-thunk'
+import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import IncidentList from '../../src/components/IncidentList';
 import Incident from '../../src/components/Incident';
@@ -40,7 +39,11 @@ describe('component::IncidentList', () => {
       ];
       const mockStore = configureMockStore([thunk]);
       const store = mockStore({ incidentList });
-      const wrapper = mount(<Provider store={store}><IncidentList incidentList={incidentList} /></Provider>);
+      const wrapper = mount(
+        <Provider store={store}>
+          <IncidentList incidentList={incidentList} />
+        </Provider>
+      );
       expect(wrapper.find(Incident)).to.have.length(3);
     });
   });

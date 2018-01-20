@@ -9,15 +9,11 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  ...bindActionCreators(
-    { updateIncidentCreateForm, addIncident },
-    dispatch,
-  ),
+  ...bindActionCreators({ updateIncidentCreateForm, addIncident }, dispatch),
 });
 
-const VisibleIncidentCreateForm = connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(IncidentCreateForm);
+const VisibleIncidentCreateForm = connect(mapStateToProps, mapDispatchToProps)(
+  IncidentCreateForm
+);
 
 export default VisibleIncidentCreateForm;

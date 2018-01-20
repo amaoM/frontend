@@ -11,9 +11,8 @@ const mapDispatchToProps = dispatch => ({
   ...bindActionCreators({ searchIncident }, dispatch),
 });
 
-const VisibleIncidentSearchForm = connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(IncidentSearchForm);
+const VisibleIncidentSearchForm = connect(mapStateToProps, mapDispatchToProps)(
+  IncidentSearchForm
+);
 
 export default VisibleIncidentSearchForm;

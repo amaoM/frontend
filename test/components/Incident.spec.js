@@ -17,9 +17,13 @@ describe('component::Incident', () => {
       editIncident: spy(),
     };
     const component = shallow(<Incident {...state} />);
-    expect(component.find('tr.table__body__row.table__body__row--critical')).to.have.length(1);
+    expect(
+      component.find('tr.table__body__row.table__body__row--critical')
+    ).to.have.length(1);
     expect(component.find('td.table__body__row__item')).to.have.length(6);
-    const texts = component.find('td.table__body__row__item').map(node => node.text());
+    const texts = component
+      .find('td.table__body__row__item')
+      .map(node => node.text());
     expect(texts).to.eql([
       '',
       '1',

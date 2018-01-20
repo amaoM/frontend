@@ -14,23 +14,21 @@ const statusItems = {
   completed: 'Completed',
 };
 
-const createOptions = (
-  selectedKey,
-  items,
-) => {
+const createOptions = (selectedKey, items) => {
   const options = [];
   let isSelected = false;
-  Object.keys(items).forEach((key) => {
+  Object.keys(items).forEach(key => {
     isSelected = selectedKey === key;
-    options.push(<option key={key} value={key} defaultValue={isSelected} >{items[key]}</option>);
+    options.push(
+      <option key={key} value={key} defaultValue={isSelected}>
+        {items[key]}
+      </option>
+    );
   });
   return options;
 };
 
-const IncidentSearchForm = ({
-  incidentSearchForm,
-  searchIncident,
-}) => (
+const IncidentSearchForm = ({ incidentSearchForm, searchIncident }) => (
   <section className="col search">
     <div className="search__form">
       <input
@@ -40,11 +38,19 @@ const IncidentSearchForm = ({
         value={incidentSearchForm.keyword}
         onChange={event => searchIncident(event)}
       />
-      <select className="search__form__select" name="level" onChange={event => searchIncident(event)}>
-        { createOptions(incidentSearchForm.level, levelItems) }
+      <select
+        className="search__form__select"
+        name="level"
+        onChange={event => searchIncident(event)}
+      >
+        {createOptions(incidentSearchForm.level, levelItems)}
       </select>
-      <select className="search__form__select" name="status" onChange={event => searchIncident(event)}>
-        { createOptions(incidentSearchForm.status, statusItems) }
+      <select
+        className="search__form__select"
+        name="status"
+        onChange={event => searchIncident(event)}
+      >
+        {createOptions(incidentSearchForm.status, statusItems)}
       </select>
     </div>
   </section>

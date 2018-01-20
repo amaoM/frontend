@@ -7,6 +7,8 @@ const mapStateToProps = state => ({
   incidentCreateForm: state.incidentCreateForm,
 });
 
-const VisibleIncidentListContainer = connect(mapStateToProps)(IncidentListContainer);
+const VisibleIncidentListContainer = connect(mapStateToProps)(
+  IncidentListContainer
+);
 
 export default VisibleIncidentListContainer;

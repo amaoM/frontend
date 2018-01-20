@@ -11,10 +11,7 @@ export const searchIncident = event => ({
 });
 
 // Reducer
-const search = (
-  state = initialState,
-  action,
-) => {
+const search = (state = initialState, action) => {
   switch (action.type) {
     case 'SEARCH_INCIDENT': {
       switch (action.event.target.name) {

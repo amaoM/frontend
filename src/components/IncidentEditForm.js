@@ -12,10 +12,14 @@ const statusItems = {
   completed: 'Completed',
 };
 
-const createOptions = (items) => {
+const createOptions = items => {
   const options = [];
-  Object.keys(items).forEach((key) => {
-    options.push(<option key={key} value={key}>{items[key]}</option>);
+  Object.keys(items).forEach(key => {
+    options.push(
+      <option key={key} value={key}>
+        {items[key]}
+      </option>
+    );
   });
   return options;
 };
@@ -48,7 +52,7 @@ const IncidentEditForm = ({
             value={incidentEditForm.level}
             onChange={event => updateIncidentEditForm(event, initialIncident)}
           >
-            { createOptions(levelItems) }
+            {createOptions(levelItems)}
           </select>
         </li>
         <li className="incidentForm__container__item-header">Status</li>
@@ -59,7 +63,7 @@ const IncidentEditForm = ({
             value={incidentEditForm.status}
             onChange={event => updateIncidentEditForm(event, initialIncident)}
           >
-            { createOptions(statusItems) }
+            {createOptions(statusItems)}
           </select>
         </li>
         <li className="incidentForm__container__item-header">Description</li>
@@ -88,7 +92,7 @@ const IncidentEditForm = ({
               updateIncident(incidentEditForm);
               addIncidentTimeLineEvent(initialIncident, incidentEditForm);
             }}
-            disabled={(!incidentEditForm.validationResult.totalResult)}
+            disabled={!incidentEditForm.validationResult.totalResult}
           >
             Edit
           </button>

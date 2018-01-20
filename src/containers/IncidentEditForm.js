@@ -2,7 +2,10 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import IncidentEditForm from '../components/IncidentEditForm';
 import { updateIncident } from '../modules/incidentList';
-import { editIncident, updateIncidentEditForm } from '../modules/incidentEditForm';
+import {
+  editIncident,
+  updateIncidentEditForm,
+} from '../modules/incidentEditForm';
 import { addIncidentTimeLineEvent } from '../modules/incidentTimeLine';
 
 const mapStateToProps = state => ({
@@ -17,13 +20,12 @@ const mapDispatchToProps = dispatch => ({
       updateIncident,
       addIncidentTimeLineEvent,
     },
-    dispatch,
+    dispatch
   ),
 });
 
-const VisibleIncidentEditForm = connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(IncidentEditForm);
+const VisibleIncidentEditForm = connect(mapStateToProps, mapDispatchToProps)(
+  IncidentEditForm
+);
 
 export default VisibleIncidentEditForm;

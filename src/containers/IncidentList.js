@@ -3,9 +3,12 @@ import IncidentList from '../components/IncidentList';
 
 const search = (incidentList, incidentSearchForm) => {
   let result = incidentList;
-  if (incidentSearchForm.keyword !== '') result = result.filter(t => (t.title.includes(incidentSearchForm.keyword)));
-  if (incidentSearchForm.status !== 'all') result = result.filter(t => (t.status === incidentSearchForm.status));
-  if (incidentSearchForm.level !== 'all') result = result.filter(t => (t.level === incidentSearchForm.level));
+  if (incidentSearchForm.keyword !== '')
+    result = result.filter(t => t.title.includes(incidentSearchForm.keyword));
+  if (incidentSearchForm.status !== 'all')
+    result = result.filter(t => t.status === incidentSearchForm.status);
+  if (incidentSearchForm.level !== 'all')
+    result = result.filter(t => t.level === incidentSearchForm.level);
   return result;
 };
 

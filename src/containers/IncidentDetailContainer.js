@@ -9,14 +9,16 @@ const searchIncidentById = (incidentList, targetIncidentId) => {
   return undefined;
 };
 
-const mapStateToProps = (
-  state,
-  ownProps,
-) => {
-  const initialIncident = searchIncidentById(state.incidentList, ownProps.params.id);
+const mapStateToProps = (state, ownProps) => {
+  const initialIncident = searchIncidentById(
+    state.incidentList,
+    ownProps.params.id
+  );
   return { initialIncident };
 };
 
-const VisibleIncidentDetailContainer = connect(mapStateToProps)(IncidentDetailContainer);
+const VisibleIncidentDetailContainer = connect(mapStateToProps)(
+  IncidentDetailContainer
+);
 
 export default VisibleIncidentDetailContainer;
