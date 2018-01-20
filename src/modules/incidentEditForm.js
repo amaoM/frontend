@@ -19,7 +19,7 @@ const validation = (state, initialIncident = null) => {
     description: !!state.description,
     person: !!state.person,
   };
-  const totalResult = initialIncident &&
+  const totalResult = initialIncident != null &&
     Object.keys(result).every(item => (result[item])) &&
     Object.keys(initialIncident).some(item => (
       state[item] !== initialIncident[item]
@@ -34,14 +34,14 @@ const updateState = (state, initialIncident) => {
 
 const incidentEditForm = (state = {}, action) => {
   switch (action.type) {
+    case 'EDIT_INCIDENT': {
+      return updateState(action.incident);
+    }
     case 'UPDATE_INCIDENT_EDIT_FORM': {
       const newState = Object.assign({}, state, {
         [action.event.target.name]: action.event.target.value,
       });
       return updateState(newState, action.initialIncident);
-    }
-    case 'EDIT_INCIDENT': {
-      return updateState(action.incident);
     }
     case 'ADD_INCIDENT_TIMELINE_EVENT': {
       return updateState(state);

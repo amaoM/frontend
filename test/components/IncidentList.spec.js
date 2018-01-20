@@ -11,7 +11,7 @@ import Incident from '../../src/components/Incident';
 
 describe('component::IncidentList', () => {
   describe('when IncidentList is renderd', () => {
-    it('should be rendered id, level, status, title, description and person fields with setted values', () => {
+    it('should be rendered for the number of incidentList', () => {
       const incidentList = [
         {
           id: '1',

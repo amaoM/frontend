@@ -85,4 +85,35 @@ describe('reducers::incidentCreateForm', () => {
       expect(reducer(state, action)).to.deep.equal(expected);
     });
   });
+  describe('when the action type is ADD_INCIDENT', () => {
+    it('should initialize the incident create form', () => {
+      const state = {
+        id: '1',
+        title: 'Blah blah blah',
+        level: 'critical',
+        status: 'unsupported',
+        description: 'Blah blah blah',
+        person: '',
+        validationResult: {
+          totalResult: false,
+        },
+      };
+      const action = {
+        type: 'ADD_INCIDENT',
+        incidentCreateForm: state,
+      };
+      const expected = {
+        id: '2',
+        title: '',
+        level: 'critical',
+        status: 'unsupported',
+        description: '',
+        person: '',
+        validationResult: {
+          totalResult: false,
+        },
+      };
+      expect(reducer(state, action)).to.deep.equal(expected);
+    });
+  });
 });
