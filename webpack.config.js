@@ -23,23 +23,19 @@ module.exports = [{
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loaders: ['babel-loader'],
+        use: 'babel-loader',
       },
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loaders: ['eslint-loader'],
-      },
-      {
-        test: /\.html$/,
-        loader: 'file?name=[name].[ext]',
+        use: 'eslint-loader',
       },
     ],
   },
   devtool: '#inline-source-map',
-  plugins: [
-    new webpack.optimize.UglifyJsPlugin()
-  ],
+  // plugins: [
+  //   new webpack.optimize.UglifyJsPlugin()
+  // ],
 },
 {
   entry: './app.scss',
