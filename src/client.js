@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { hydrate } from 'react-dom';
 import { Router, Route, browserHistory } from 'react-router';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
@@ -12,7 +12,7 @@ const store = createStore(reducer);
 
 const history = syncHistoryWithStore(browserHistory, store);
 
-ReactDOM.render(
+hydrate(
   <Provider store={store}>
     <main className="container">
       <Router history={history}>

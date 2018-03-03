@@ -5,6 +5,7 @@
   "main": "webpack.config.js",
   "dependencies": {
     "deep-freeze": "0.0.1",
+    "express": "^4.16.2",
     "isomorphic-fetch": "^2.2.1",
     "material-ui": "^0.19.4",
     "prop-types": "^15.6.0",
@@ -24,6 +25,7 @@
   },
   "devDependencies": {
     "babel": "~6.23.0",
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.3",
     "babel-loader": "^7.1.2",
@@ -63,7 +65,8 @@
   },
   "scripts": {
     "test": "mocha --require babel-core/register --require ./test/setup.js test/**/*.spec.js",
-    "start": "webpack-dev-server --host 0.0.0.0 --public 192.168.110.110:9000 --hot --inline --history-api-fallback",
+    "watch": "webpack-dev-server --host 0.0.0.0 --public 192.168.110.110:9000 --hot --inline --history-api-fallback",
+    "start": "babel-node src/server.js --exec babel-node --presets es2015",
     "build": "webpack",
     "lint": "eslint",
     "format": "prettier-eslint",
