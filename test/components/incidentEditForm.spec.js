@@ -10,6 +10,17 @@ import IncidentEditForm from '../../src/components/IncidentEditForm';
 
 describe('component::IncidentEditForm', () => {
   const incidentEditFormProps = {
+    initialIncident: {
+      id: '1',
+      title: 'Blah blah blah',
+      level: 'critical',
+      status: 'unsupported',
+      description: 'Blah blah blah',
+      person: 'person',
+      validationResult: {
+        totalResult: false,
+      },
+    },
     incidentEditForm: {
       id: '1',
       title: 'Blah blah blah',

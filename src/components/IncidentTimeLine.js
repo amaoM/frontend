@@ -20,8 +20,9 @@ const IncidentTimeLine = ({ incidentTimeLine }) => (
 IncidentTimeLine.propTypes = {
   incidentTimeLine: PropTypes.arrayOf(
     PropTypes.shape({
+      id: PropTypes.number.isRequired,
       timelineDate: PropTypes.string.isRequired,
-      offsetMessage: PropTypes.shape().isRequired,
+      offsetMessage: PropTypes.string.isRequired,
     }).isRequired
   ).isRequired,
 };

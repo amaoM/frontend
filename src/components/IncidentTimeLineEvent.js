@@ -13,8 +13,9 @@ const IncidentTimeLineEvent = ({ timelineDate, offsetMessage }) => (
 );
 
 IncidentTimeLineEvent.propTypes = {
+  id: PropTypes.number.isRequired,
   timelineDate: PropTypes.string.isRequired,
-  offsetMessage: PropTypes.shape().isRequired,
+  offsetMessage: PropTypes.string.isRequired,
 };
 
 export default IncidentTimeLineEvent;
