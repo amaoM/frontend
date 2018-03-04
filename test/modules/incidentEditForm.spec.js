@@ -18,8 +18,8 @@ describe('reducers::incidentEditForm', () => {
           status: true,
           description: true,
           person: true,
-          totalResult: false,
         },
+        toggleEditButton: false,
       };
       const action = {
         event: {
@@ -42,8 +42,8 @@ describe('reducers::incidentEditForm', () => {
             status: true,
             description: true,
             person: true,
-            totalResult: false,
           },
+          toggleEditButton: true,
         },
       };
       const expected = {
@@ -59,8 +59,8 @@ describe('reducers::incidentEditForm', () => {
           status: true,
           description: true,
           person: true,
-          totalResult: true,
         },
+        toggleEditButton: true,
       };
       expect(reducer(state, action)).to.deep.equal(expected);
     });
@@ -80,8 +80,8 @@ describe('reducers::incidentEditForm', () => {
           status: true,
           description: true,
           person: true,
-          totalResult: false,
         },
+        toggleEditButton: false,
       };
       const action = {
         event: {
@@ -104,8 +104,8 @@ describe('reducers::incidentEditForm', () => {
             status: true,
             description: true,
             person: true,
-            totalResult: false,
           },
+          toggleEditButton: false,
         },
       };
       const expected = {
@@ -121,8 +121,8 @@ describe('reducers::incidentEditForm', () => {
           status: true,
           description: true,
           person: false,
-          totalResult: false,
         },
+        toggleEditButton: false,
       };
       expect(reducer(state, action)).to.deep.equal(expected);
     });
@@ -142,8 +142,8 @@ describe('reducers::incidentEditForm', () => {
           status: true,
           description: true,
           person: true,
-          totalResult: false,
         },
+        toggleEditButton: false,
       };
       const action = {
         type: 'EDIT_INCIDENT',
@@ -151,7 +151,7 @@ describe('reducers::incidentEditForm', () => {
           id: '1',
           title: 'Blah blah blah',
           level: 'critical',
-          status: 'unsupported',
+          status: 'completed',
           description: 'Blah blah blah',
           person: 'person',
           validationResult: {
@@ -160,15 +160,15 @@ describe('reducers::incidentEditForm', () => {
             status: true,
             description: true,
             person: true,
-            totalResult: true,
           },
+          toggleEditButton: false,
         },
       };
       const expected = {
         id: '1',
         title: 'Blah blah blah',
         level: 'critical',
-        status: 'unsupported',
+        status: 'completed',
         description: 'Blah blah blah',
         person: 'person',
         validationResult: {
@@ -177,8 +177,8 @@ describe('reducers::incidentEditForm', () => {
           status: true,
           description: true,
           person: true,
-          totalResult: false,
         },
+        toggleEditButton: false,
       };
       expect(reducer(state, action)).to.deep.equal(expected);
     });

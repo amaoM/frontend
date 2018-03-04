@@ -12,7 +12,7 @@ export const updateIncidentEditForm = (event, initialIncident) => ({
 
 // Reducer
 const validation = (state, initialIncident = null) => {
-  const result = {
+  return {
     title: !!state.title && state.title !== null && state.title !== '',
     level: !!state.level && ['critical', 'warning'].indexOf(state.level) >= 0,
     status:
@@ -21,18 +21,17 @@ const validation = (state, initialIncident = null) => {
     description: !!state.description,
     person: !!state.person,
   };
-  const totalResult =
-    initialIncident != null &&
-    Object.keys(result).every(item => result[item]) &&
-    Object.keys(initialIncident).some(
-      item => state[item] !== initialIncident[item]
-    );
-  return Object.assign({}, result, { totalResult });
 };
 
 const updateState = (state, initialIncident) => {
   const validationResult = validation(state, initialIncident);
-  return Object.assign({}, state, { validationResult });
+  const toggleEditButton =
+    initialIncident != null &&
+    Object.keys(validationResult).every(item => validationResult[item]) &&
+    Object.keys(initialIncident).some(
+      item => state[item] !== initialIncident[item]
+    );
+  return Object.assign({}, state, { validationResult, toggleEditButton });
 };
 
 const incidentEditForm = (state = {}, action) => {
