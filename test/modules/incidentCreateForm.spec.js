@@ -12,9 +12,8 @@ describe('reducers::incidentCreateForm', () => {
         status: 'unsupported',
         description: '',
         person: '',
-        validationResult: {
-          totalResult: false,
-        },
+        validationResult: {},
+        toggleCreateButton: false,
       };
       const action = {
         event: {
@@ -38,8 +37,8 @@ describe('reducers::incidentCreateForm', () => {
           status: true,
           description: false,
           person: false,
-          totalResult: false,
         },
+        toggleCreateButton: false,
       };
       expect(reducer(state, action)).to.deep.equal(expected);
     });
@@ -53,9 +52,8 @@ describe('reducers::incidentCreateForm', () => {
         status: 'unsupported',
         description: 'Blah blah blah',
         person: '',
-        validationResult: {
-          totalResult: false,
-        },
+        validationResult: {},
+        toggleCreateButton: false,
       };
       const action = {
         event: {
@@ -79,8 +77,8 @@ describe('reducers::incidentCreateForm', () => {
           status: true,
           description: true,
           person: true,
-          totalResult: true,
         },
+        toggleCreateButton: true,
       };
       expect(reducer(state, action)).to.deep.equal(expected);
     });
@@ -94,9 +92,8 @@ describe('reducers::incidentCreateForm', () => {
         status: 'unsupported',
         description: 'Blah blah blah',
         person: '',
-        validationResult: {
-          totalResult: false,
-        },
+        validationResult: {},
+        toggleCreateButton: false,
       };
       const action = {
         type: 'ADD_INCIDENT',
@@ -109,9 +106,8 @@ describe('reducers::incidentCreateForm', () => {
         status: 'unsupported',
         description: '',
         person: '',
-        validationResult: {
-          totalResult: false,
-        },
+        validationResult: {},
+        toggleCreateButton: false,
       };
       expect(reducer(state, action)).to.deep.equal(expected);
     });

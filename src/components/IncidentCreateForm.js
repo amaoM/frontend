@@ -87,7 +87,7 @@ const IncidentCreateForm = ({
           <button
             className="incidentForm__container__item-button__decision"
             onClick={() => addIncident(incidentCreateForm)}
-            disabled={!incidentCreateForm.validationResult.totalResult}
+            disabled={incidentCreateForm.toggleCreateButton}
           >
             Create
           </button>
@@ -104,9 +104,8 @@ IncidentCreateForm.propTypes = {
     status: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     person: PropTypes.string.isRequired,
-    validationResult: PropTypes.shape({
-      totalResult: PropTypes.bool.isRequired,
-    }),
+    validationResult: PropTypes.shape({}),
+    toggleCreateButton: PropTypes.bool.isRequired,
   }).isRequired,
   updateIncidentCreateForm: PropTypes.func.isRequired,
   addIncident: PropTypes.func.isRequired,

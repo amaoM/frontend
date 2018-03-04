@@ -5,9 +5,8 @@ const initialState = {
   status: 'unsupported',
   description: '',
   person: '',
-  validationResult: {
-    totalResult: false,
-  },
+  validationResult: {},
+  toggleCreateButton: false,
 };
 
 // Action Creators
@@ -18,7 +17,7 @@ export const updateIncidentCreateForm = event => ({
 
 // Reducer
 const validation = state => {
-  const result = {
+  return {
     title: !!state.title && state.title !== null && state.title !== '',
     level: !!state.level && ['critical', 'warning'].indexOf(state.level) >= 0,
     status:
@@ -27,8 +26,6 @@ const validation = state => {
     description: !!state.description,
     person: !!state.person,
   };
-  const totalResult = Object.keys(result).every(item => result[item]);
-  return Object.assign({}, result, { totalResult });
 };
 
 const incidentCreateForm = (state = initialState, action) => {
@@ -38,7 +35,8 @@ const incidentCreateForm = (state = initialState, action) => {
         [action.event.target.name]: action.event.target.value,
       });
       const validationResult = validation(newState);
-      return Object.assign({}, newState, { validationResult });
+      const toggleCreateButton = Object.keys(validationResult).every(item => validationResult[item]);
+      return Object.assign({}, newState, { validationResult, toggleCreateButton });
     }
     case 'ADD_INCIDENT':
       return Object.assign({}, initialState, {
