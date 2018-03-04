@@ -1,19 +1,13 @@
 import React from 'react';
 import { hydrate } from 'react-dom';
 import { Router, Route, browserHistory } from 'react-router';
-import { applyMiddleware, createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { syncHistoryWithStore } from 'react-router-redux';
-import { createLogger } from 'redux-logger';
-import reducer from './modules/index';
+import configureStore from './store/configureStore';
 import VisibleIncidentListContainer from './containers/IncidentListContainer';
 import VisibleIncidentDetailContainer from './containers/IncidentDetailContainer';
 
-const logger = createLogger({
-  collapsed: true,
-});
-const createStoreWithMiddleware = applyMiddleware(logger)(createStore);
-const store = createStoreWithMiddleware(reducer);
+const store = configureStore();
 
 const history = syncHistoryWithStore(browserHistory, store);
 
