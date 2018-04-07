@@ -7,7 +7,7 @@ import configureStore from './store/configureStore';
 import VisibleIncidentListContainer from './containers/IncidentListContainer';
 import VisibleIncidentDetailContainer from './containers/IncidentDetailContainer';
 
-const store = configureStore();
+const store = configureStore;
 
 const history = syncHistoryWithStore(browserHistory, store);
 
