@@ -18,7 +18,7 @@ describe('component::IncidentEditForm', () => {
       description: 'Blah blah blah',
       person: 'person',
       validationResult: {},
-      toggleEditButton: false,
+      disabledEditButton: false,
     },
     incidentEditForm: {
       id: '1',
@@ -28,7 +28,7 @@ describe('component::IncidentEditForm', () => {
       description: 'Blah blah blah',
       person: 'person',
       validationResult: {},
-      toggleEditButton: false,
+      disabledEditButton: false,
     },
     updateIncidentEditForm: spy(),
     updateIncident: spy(),
@@ -100,7 +100,15 @@ describe('component::IncidentEditForm', () => {
   describe('when the validation is false', () => {
     const component = mount(
       <Provider store={store}>
-        <IncidentEditForm {...incidentEditFormProps} />
+        <IncidentEditForm {...Object.assign(
+          {},
+          incidentEditFormProps,
+          { incidentEditForm: Object.assign(
+            {},
+            incidentEditFormProps.incidentEditForm,
+            { disabledEditButton: true },
+          )}
+        )} />
       </Provider>
     );
     it('should the edit button is disabled', () => {
@@ -108,17 +116,13 @@ describe('component::IncidentEditForm', () => {
         component
           .find('.incidentForm__container__item-button__decision')
           .prop('disabled')
-      ).to.equal(false);
+      ).to.equal(true);
     });
   });
   describe('when the validation is true', () => {
     const component = mount(
       <Provider store={store}>
-        <IncidentEditForm {...Object.assign(
-          {},
-          incidentEditFormProps,
-          { incidentEditForm: { toggleEditButton: true } }
-        )} />
+        <IncidentEditForm {...incidentEditFormProps} />
       </Provider>
     );
     it('should the edit button is enabled', () => {
@@ -126,7 +130,7 @@ describe('component::IncidentEditForm', () => {
         component
           .find('.incidentForm__container__item-button__decision')
           .prop('disabled')
-      ).to.equal(true);
+      ).to.equal(false);
     });
   });
 });

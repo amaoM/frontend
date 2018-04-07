@@ -18,7 +18,7 @@ describe('component::IncidentCreateForm', () => {
       description: '',
       person: '',
       validationResult: {},
-      toggleCreateButton: false,
+      disabledCreateButton: true,
     },
     updateIncidentCreateForm: spy(),
     addIncident: spy(),
@@ -97,7 +97,7 @@ describe('component::IncidentCreateForm', () => {
         component
           .find('.incidentForm__container__item-button__decision')
           .prop('disabled')
-      ).to.equal(false);
+      ).to.equal(true);
     });
   });
   describe('when the validation is true', () => {
@@ -106,7 +106,11 @@ describe('component::IncidentCreateForm', () => {
         <IncidentCreateForm {...Object.assign(
           {},
           incidentCreateFormProps,
-          { toggleCreateButton:true }
+          { incidentCreateForm: Object.assign(
+            {},
+            incidentCreateFormProps.incidentCreateForm,
+            { disabledCreateButton: false },
+          )}
         )} />
       </Provider>
     );

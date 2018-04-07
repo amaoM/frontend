@@ -11,27 +11,25 @@ export const updateIncidentEditForm = (event, initialIncident) => ({
 });
 
 // Reducer
-const validation = (state, initialIncident = null) => {
-  return {
-    title: !!state.title && state.title !== null && state.title !== '',
-    level: !!state.level && ['critical', 'warning'].indexOf(state.level) >= 0,
-    status:
-      !!state.status &&
-      ['unsupported', 'in_progress', 'completed'].indexOf(state.status) >= 0,
-    description: !!state.description,
-    person: !!state.person,
-  };
-};
+const validation = state => ({
+  title: !!state.title && state.title !== null && state.title !== '',
+  level: !!state.level && ['critical', 'warning'].indexOf(state.level) >= 0,
+  status:
+    !!state.status &&
+    ['unsupported', 'in_progress', 'completed'].indexOf(state.status) >= 0,
+  description: !!state.description,
+  person: !!state.person,
+});
 
 const updateState = (state, initialIncident) => {
-  const validationResult = validation(state, initialIncident);
-  const toggleEditButton =
+  const validationResult = validation(state);
+  const disabledEditButton =
     initialIncident != null &&
-    Object.keys(validationResult).every(item => validationResult[item]) &&
+    !Object.keys(validationResult).every(item => validationResult[item]) &&
     Object.keys(initialIncident).some(
       item => state[item] !== initialIncident[item]
     );
-  return Object.assign({}, state, { validationResult, toggleEditButton });
+  return Object.assign({}, state, { validationResult, disabledEditButton });
 };
 
 const incidentEditForm = (state = {}, action) => {
@@ -40,6 +38,7 @@ const incidentEditForm = (state = {}, action) => {
       return updateState(action.incident);
     }
     case 'UPDATE_INCIDENT_EDIT_FORM': {
+      action.event.persist();
       const newState = Object.assign({}, state, {
         [action.event.target.name]: action.event.target.value,
       });

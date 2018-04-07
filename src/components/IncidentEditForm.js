@@ -92,7 +92,7 @@ const IncidentEditForm = ({
               updateIncident(incidentEditForm);
               addIncidentTimeLineEvent(initialIncident, incidentEditForm);
             }}
-            disabled={incidentEditForm.toggleEditButton}
+            disabled={incidentEditForm.disabledEditButton}
           >
             Edit
           </button>

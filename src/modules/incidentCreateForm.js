@@ -6,7 +6,7 @@ const initialState = {
   description: '',
   person: '',
   validationResult: {},
-  toggleCreateButton: false,
+  disabledCreateButton: true,
 };
 
 // Action Creators
@@ -16,27 +16,31 @@ export const updateIncidentCreateForm = event => ({
 });
 
 // Reducer
-const validation = state => {
-  return {
-    title: !!state.title && state.title !== null && state.title !== '',
-    level: !!state.level && ['critical', 'warning'].indexOf(state.level) >= 0,
-    status:
-      !!state.status &&
-      ['unsupported', 'in_progress', 'completed'].indexOf(state.status) >= 0,
-    description: !!state.description,
-    person: !!state.person,
-  };
-};
+const validation = state => ({
+  title: !!state.title && state.title !== null && state.title !== '',
+  level: !!state.level && ['critical', 'warning'].indexOf(state.level) >= 0,
+  status:
+    !!state.status &&
+    ['unsupported', 'in_progress', 'completed'].indexOf(state.status) >= 0,
+  description: !!state.description,
+  person: !!state.person,
+});
 
 const incidentCreateForm = (state = initialState, action) => {
   switch (action.type) {
     case 'UPDATE_INCIDENT_CREATE_FORM': {
+      action.event.persist();
       const newState = Object.assign({}, state, {
         [action.event.target.name]: action.event.target.value,
       });
       const validationResult = validation(newState);
-      const toggleCreateButton = Object.keys(validationResult).every(item => validationResult[item]);
-      return Object.assign({}, newState, { validationResult, toggleCreateButton });
+      const disabledCreateButton = !Object.keys(validationResult).every(
+        item => validationResult[item]
+      );
+      return Object.assign({}, newState, {
+        validationResult,
+        disabledCreateButton,
+      });
     }
     case 'ADD_INCIDENT':
       return Object.assign({}, initialState, {
